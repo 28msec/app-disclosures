@@ -90,6 +90,27 @@ module.exports = function (grunt) {
                 }
             }
         },
+        htmlmin: {
+            dist: {
+                options: {},
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.www %>',
+                    src: [ '*.html', 'partials/*.html' ],
+                    dest: '<%= config.dist %>'
+                }]
+            }
+        },
+        ngmin: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.dist %>/scripts',
+                    src: '*.js',
+                    dest: '<%= config.dist %>/scripts'
+                }]
+            }
+        },
         useminPrepare: {
             html: [ '<%= config.www %>/*.html', '<%= config.www %>/partials/**/*.html' ],
             css: '<%= config.www %>/styles/**/*.css',
@@ -102,17 +123,6 @@ module.exports = function (grunt) {
             css: '<%= config.dist %>/styles/**/*.css',
             options: {
                dirs: ['<%= config.dist %>']
-            }
-        },
-        htmlmin: {
-            dist: {
-                     options: {},
-                     files: [{
-                             expand: true,
-                             cwd: '<%= config.www %>',
-                             src: ['*.html', 'partials/*.html'],
-                             dest: '<%= config.dist %>'
-                     }]
             }
         },
         'swagger-js-codegen': {
@@ -221,6 +231,6 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('test', ['clean:pre', 'less', 'karma:1.2.9', 'clean:post', 'e2e']);
-    grunt.registerTask('build', ['clean:pre', 'swagger-js-codegen', 'useminPrepare', 'concat', 'cssmin', 'htmlmin:dist', 'uglify', 'usemin']);
+    grunt.registerTask('build', ['clean:pre', 'less', 'swagger-js-codegen', 'useminPrepare', 'concat', 'ngmin', 'cssmin', 'htmlmin', 'uglify', 'usemin']);
     grunt.registerTask('default', ['jsonlint', 'jshint', 'build', 'test']);
 };

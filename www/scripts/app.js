@@ -8,7 +8,7 @@ angular.module('main', [
     
     'queries'])
 
-.run(function($rootScope, ngProgressLite) {
+.run(['$rootScope', 'ngProgressLite', function($rootScope, ngProgressLite) {
   
     $rootScope.$on('$stateChangeStart', function() {
         ngProgressLite.start();
@@ -22,8 +22,10 @@ angular.module('main', [
         console.error(error);
         ngProgressLite.done();
     });
-})
-.config(function ($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider) {
+    console.log('run');
+}])
+.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$httpProvider', 
+    function ($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider) {
 
     //Because angularjs default transformResponse is not based on ContentType
     $httpProvider.defaults.transformResponse = function(response, headers){
@@ -49,6 +51,8 @@ angular.module('main', [
         templateUrl: 'partials/home.html',
         controller: 'HomeCtrl'
     });
+    $urlRouterProvider.otherwise('/');
 
-})
+    console.log('conf');
+}])
 ;

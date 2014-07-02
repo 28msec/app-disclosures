@@ -6,3 +6,5 @@ coverage
 *.swo
 .grunt
 out
+.tmp
+dist
