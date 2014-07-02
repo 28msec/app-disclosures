@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.28.app-disclosures" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>disclosures</name>
+    <description>
+        Disclosures searching application
+    </description>
+    <author email="support@28msec.com" href="http://28.io">
+        28msec Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+</widget>
+
