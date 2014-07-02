@@ -50,24 +50,24 @@ angular.module('queries', [])
                 var queryParameters = {};
                 var headers = {};
 
-                if (parameters.format !== undefined) {
-                    queryParameters['format'] = parameters.format;
+                if (parameters['format'] !== undefined) {
+                    queryParameters['format'] = parameters['format'];
                 }
 
-                if (parameters.tag !== undefined) {
-                    queryParameters['tag'] = parameters.tag;
+                if (parameters['tag'] !== undefined) {
+                    queryParameters['tag'] = parameters['tag'];
                 }
 
-                if (parameters.cik !== undefined) {
-                    queryParameters['cik'] = parameters.cik;
+                if (parameters['cik'] !== undefined) {
+                    queryParameters['cik'] = parameters['cik'];
                 }
 
-                if (parameters.ticker !== undefined) {
-                    queryParameters['ticker'] = parameters.ticker;
+                if (parameters['ticker'] !== undefined) {
+                    queryParameters['ticker'] = parameters['ticker'];
                 }
 
-                if (parameters.token !== undefined) {
-                    queryParameters['token'] = parameters.token;
+                if (parameters['token'] !== undefined) {
+                    queryParameters['token'] = parameters['token'];
                 }
 
                 var url = domain + path;
@@ -93,6 +93,7 @@ angular.module('queries', [])
                             body: data
                         });
                     });
+
                 return deferred.promise;
             };
             /**
@@ -119,40 +120,40 @@ angular.module('queries', [])
                 var queryParameters = {};
                 var headers = {};
 
-                if (parameters.format !== undefined) {
-                    queryParameters['format'] = parameters.format;
+                if (parameters['format'] !== undefined) {
+                    queryParameters['format'] = parameters['format'];
                 }
 
-                if (parameters.tag !== undefined) {
-                    queryParameters['tag'] = parameters.tag;
+                if (parameters['tag'] !== undefined) {
+                    queryParameters['tag'] = parameters['tag'];
                 }
 
-                if (parameters.cik !== undefined) {
-                    queryParameters['cik'] = parameters.cik;
+                if (parameters['cik'] !== undefined) {
+                    queryParameters['cik'] = parameters['cik'];
                 }
 
-                if (parameters.ticker !== undefined) {
-                    queryParameters['ticker'] = parameters.ticker;
+                if (parameters['ticker'] !== undefined) {
+                    queryParameters['ticker'] = parameters['ticker'];
                 }
 
-                if (parameters.sic !== undefined) {
-                    queryParameters['sic'] = parameters.sic;
+                if (parameters['sic'] !== undefined) {
+                    queryParameters['sic'] = parameters['sic'];
                 }
 
-                if (parameters.aid !== undefined) {
-                    queryParameters['aid'] = parameters.aid;
+                if (parameters['aid'] !== undefined) {
+                    queryParameters['aid'] = parameters['aid'];
                 }
 
-                if (parameters.fiscalYear !== undefined) {
-                    queryParameters['fiscalYear'] = parameters.fiscalYear;
+                if (parameters['fiscalYear'] !== undefined) {
+                    queryParameters['fiscalYear'] = parameters['fiscalYear'];
                 }
 
-                if (parameters.fiscalPeriod !== undefined) {
-                    queryParameters['fiscalPeriod'] = parameters.fiscalPeriod;
+                if (parameters['fiscalPeriod'] !== undefined) {
+                    queryParameters['fiscalPeriod'] = parameters['fiscalPeriod'];
                 }
 
-                if (parameters.token !== undefined) {
-                    queryParameters['token'] = parameters.token;
+                if (parameters['token'] !== undefined) {
+                    queryParameters['token'] = parameters['token'];
                 }
 
                 var url = domain + path;
@@ -178,6 +179,7 @@ angular.module('queries', [])
                             body: data
                         });
                     });
+
                 return deferred.promise;
             };
             /**
@@ -209,60 +211,60 @@ angular.module('queries', [])
                 var queryParameters = {};
                 var headers = {};
 
-                if (parameters.format !== undefined) {
-                    queryParameters['format'] = parameters.format;
+                if (parameters['format'] !== undefined) {
+                    queryParameters['format'] = parameters['format'];
                 }
 
-                if (parameters.ticker !== undefined) {
-                    queryParameters['ticker'] = parameters.ticker;
+                if (parameters['ticker'] !== undefined) {
+                    queryParameters['ticker'] = parameters['ticker'];
                 }
 
-                if (parameters.tag !== undefined) {
-                    queryParameters['tag'] = parameters.tag;
+                if (parameters['tag'] !== undefined) {
+                    queryParameters['tag'] = parameters['tag'];
                 }
 
-                if (parameters.sic !== undefined) {
-                    queryParameters['sic'] = parameters.sic;
+                if (parameters['sic'] !== undefined) {
+                    queryParameters['sic'] = parameters['sic'];
                 }
 
-                if (parameters.cik !== undefined) {
-                    queryParameters['cik'] = parameters.cik;
+                if (parameters['cik'] !== undefined) {
+                    queryParameters['cik'] = parameters['cik'];
                 }
 
-                if (parameters.fiscalYear !== undefined) {
-                    queryParameters['fiscalYear'] = parameters.fiscalYear;
+                if (parameters['fiscalYear'] !== undefined) {
+                    queryParameters['fiscalYear'] = parameters['fiscalYear'];
                 }
 
-                if (parameters.fiscalPeriod !== undefined) {
-                    queryParameters['fiscalPeriod'] = parameters.fiscalPeriod;
+                if (parameters['fiscalPeriod'] !== undefined) {
+                    queryParameters['fiscalPeriod'] = parameters['fiscalPeriod'];
                 }
 
-                if (parameters.aid !== undefined) {
-                    queryParameters['aid'] = parameters.aid;
+                if (parameters['aid'] !== undefined) {
+                    queryParameters['aid'] = parameters['aid'];
                 }
 
-                if (parameters.cid !== undefined) {
-                    queryParameters['cid'] = parameters.cid;
+                if (parameters['cid'] !== undefined) {
+                    queryParameters['cid'] = parameters['cid'];
                 }
 
-                if (parameters.networkIdentifier !== undefined) {
-                    queryParameters['networkIdentifier'] = parameters.networkIdentifier;
+                if (parameters['networkIdentifier'] !== undefined) {
+                    queryParameters['networkIdentifier'] = parameters['networkIdentifier'];
                 }
 
-                if (parameters.disclosure !== undefined) {
-                    queryParameters['disclosure'] = parameters.disclosure;
+                if (parameters['disclosure'] !== undefined) {
+                    queryParameters['disclosure'] = parameters['disclosure'];
                 }
 
-                if (parameters.reportElement !== undefined) {
-                    queryParameters['reportElement'] = parameters.reportElement;
+                if (parameters['reportElement'] !== undefined) {
+                    queryParameters['reportElement'] = parameters['reportElement'];
                 }
 
-                if (parameters.label !== undefined) {
-                    queryParameters['label'] = parameters.label;
+                if (parameters['label'] !== undefined) {
+                    queryParameters['label'] = parameters['label'];
                 }
 
-                if (parameters.token !== undefined) {
-                    queryParameters['token'] = parameters.token;
+                if (parameters['token'] !== undefined) {
+                    queryParameters['token'] = parameters['token'];
                 }
 
                 var url = domain + path;
@@ -288,6 +290,7 @@ angular.module('queries', [])
                             body: data
                         });
                     });
+
                 return deferred.promise;
             };
             /**
@@ -317,52 +320,52 @@ angular.module('queries', [])
                 var queryParameters = {};
                 var headers = {};
 
-                if (parameters.format !== undefined) {
-                    queryParameters['format'] = parameters.format;
+                if (parameters['format'] !== undefined) {
+                    queryParameters['format'] = parameters['format'];
                 }
 
-                if (parameters.cid !== undefined) {
-                    queryParameters['cid'] = parameters.cid;
+                if (parameters['cid'] !== undefined) {
+                    queryParameters['cid'] = parameters['cid'];
                 }
 
-                if (parameters.aid !== undefined) {
-                    queryParameters['aid'] = parameters.aid;
+                if (parameters['aid'] !== undefined) {
+                    queryParameters['aid'] = parameters['aid'];
                 }
 
-                if (parameters.cik !== undefined) {
-                    queryParameters['cik'] = parameters.cik;
+                if (parameters['cik'] !== undefined) {
+                    queryParameters['cik'] = parameters['cik'];
                 }
 
-                if (parameters.ticker !== undefined) {
-                    queryParameters['ticker'] = parameters.ticker;
+                if (parameters['ticker'] !== undefined) {
+                    queryParameters['ticker'] = parameters['ticker'];
                 }
 
-                if (parameters.tag !== undefined) {
-                    queryParameters['tag'] = parameters.tag;
+                if (parameters['tag'] !== undefined) {
+                    queryParameters['tag'] = parameters['tag'];
                 }
 
-                if (parameters.sic !== undefined) {
-                    queryParameters['sic'] = parameters.sic;
+                if (parameters['sic'] !== undefined) {
+                    queryParameters['sic'] = parameters['sic'];
                 }
 
-                if (parameters.networkIdentifier !== undefined) {
-                    queryParameters['networkIdentifier'] = parameters.networkIdentifier;
+                if (parameters['networkIdentifier'] !== undefined) {
+                    queryParameters['networkIdentifier'] = parameters['networkIdentifier'];
                 }
 
-                if (parameters.fiscalYear !== undefined) {
-                    queryParameters['fiscalYear'] = parameters.fiscalYear;
+                if (parameters['fiscalYear'] !== undefined) {
+                    queryParameters['fiscalYear'] = parameters['fiscalYear'];
                 }
 
-                if (parameters.fiscalPeriod !== undefined) {
-                    queryParameters['fiscalPeriod'] = parameters.fiscalPeriod;
+                if (parameters['fiscalPeriod'] !== undefined) {
+                    queryParameters['fiscalPeriod'] = parameters['fiscalPeriod'];
                 }
 
-                if (parameters.disclosure !== undefined) {
-                    queryParameters['disclosure'] = parameters.disclosure;
+                if (parameters['disclosure'] !== undefined) {
+                    queryParameters['disclosure'] = parameters['disclosure'];
                 }
 
-                if (parameters.token !== undefined) {
-                    queryParameters['token'] = parameters.token;
+                if (parameters['token'] !== undefined) {
+                    queryParameters['token'] = parameters['token'];
                 }
 
                 var url = domain + path;
@@ -388,6 +391,7 @@ angular.module('queries', [])
                             body: data
                         });
                     });
+
                 return deferred.promise;
             };
             /**
@@ -417,52 +421,52 @@ angular.module('queries', [])
                 var queryParameters = {};
                 var headers = {};
 
-                if (parameters.format !== undefined) {
-                    queryParameters['format'] = parameters.format;
+                if (parameters['format'] !== undefined) {
+                    queryParameters['format'] = parameters['format'];
                 }
 
-                if (parameters.cid !== undefined) {
-                    queryParameters['cid'] = parameters.cid;
+                if (parameters['cid'] !== undefined) {
+                    queryParameters['cid'] = parameters['cid'];
                 }
 
-                if (parameters.aid !== undefined) {
-                    queryParameters['aid'] = parameters.aid;
+                if (parameters['aid'] !== undefined) {
+                    queryParameters['aid'] = parameters['aid'];
                 }
 
-                if (parameters.cik !== undefined) {
-                    queryParameters['cik'] = parameters.cik;
+                if (parameters['cik'] !== undefined) {
+                    queryParameters['cik'] = parameters['cik'];
                 }
 
-                if (parameters.ticker !== undefined) {
-                    queryParameters['ticker'] = parameters.ticker;
+                if (parameters['ticker'] !== undefined) {
+                    queryParameters['ticker'] = parameters['ticker'];
                 }
 
-                if (parameters.tag !== undefined) {
-                    queryParameters['tag'] = parameters.tag;
+                if (parameters['tag'] !== undefined) {
+                    queryParameters['tag'] = parameters['tag'];
                 }
 
-                if (parameters.sic !== undefined) {
-                    queryParameters['sic'] = parameters.sic;
+                if (parameters['sic'] !== undefined) {
+                    queryParameters['sic'] = parameters['sic'];
                 }
 
-                if (parameters.networkIdentifier !== undefined) {
-                    queryParameters['networkIdentifier'] = parameters.networkIdentifier;
+                if (parameters['networkIdentifier'] !== undefined) {
+                    queryParameters['networkIdentifier'] = parameters['networkIdentifier'];
                 }
 
-                if (parameters.fiscalYear !== undefined) {
-                    queryParameters['fiscalYear'] = parameters.fiscalYear;
+                if (parameters['fiscalYear'] !== undefined) {
+                    queryParameters['fiscalYear'] = parameters['fiscalYear'];
                 }
 
-                if (parameters.fiscalPeriod !== undefined) {
-                    queryParameters['fiscalPeriod'] = parameters.fiscalPeriod;
+                if (parameters['fiscalPeriod'] !== undefined) {
+                    queryParameters['fiscalPeriod'] = parameters['fiscalPeriod'];
                 }
 
-                if (parameters.disclosure !== undefined) {
-                    queryParameters['disclosure'] = parameters.disclosure;
+                if (parameters['disclosure'] !== undefined) {
+                    queryParameters['disclosure'] = parameters['disclosure'];
                 }
 
-                if (parameters.token !== undefined) {
-                    queryParameters['token'] = parameters.token;
+                if (parameters['token'] !== undefined) {
+                    queryParameters['token'] = parameters['token'];
                 }
 
                 var url = domain + path;
@@ -488,6 +492,7 @@ angular.module('queries', [])
                             body: data
                         });
                     });
+
                 return deferred.promise;
             };
             /**
@@ -513,32 +518,32 @@ angular.module('queries', [])
                 var queryParameters = {};
                 var headers = {};
 
-                if (parameters.format !== undefined) {
-                    queryParameters['format'] = parameters.format;
+                if (parameters['format'] !== undefined) {
+                    queryParameters['format'] = parameters['format'];
                 }
 
-                if (parameters.cik !== undefined) {
-                    queryParameters['cik'] = parameters.cik;
+                if (parameters['cik'] !== undefined) {
+                    queryParameters['cik'] = parameters['cik'];
                 }
 
-                if (parameters.ticker !== undefined) {
-                    queryParameters['ticker'] = parameters.ticker;
+                if (parameters['ticker'] !== undefined) {
+                    queryParameters['ticker'] = parameters['ticker'];
                 }
 
-                if (parameters.tag !== undefined) {
-                    queryParameters['tag'] = parameters.tag;
+                if (parameters['tag'] !== undefined) {
+                    queryParameters['tag'] = parameters['tag'];
                 }
 
-                if (parameters.sic !== undefined) {
-                    queryParameters['sic'] = parameters.sic;
+                if (parameters['sic'] !== undefined) {
+                    queryParameters['sic'] = parameters['sic'];
                 }
 
-                if (parameters.fiscalYear !== undefined) {
-                    queryParameters['fiscalYear'] = parameters.fiscalYear;
+                if (parameters['fiscalYear'] !== undefined) {
+                    queryParameters['fiscalYear'] = parameters['fiscalYear'];
                 }
 
-                if (parameters.fiscalPeriod !== undefined) {
-                    queryParameters['fiscalPeriod'] = parameters.fiscalPeriod;
+                if (parameters['fiscalPeriod'] !== undefined) {
+                    queryParameters['fiscalPeriod'] = parameters['fiscalPeriod'];
                 }
 
                 queryParameters['report'] = 'FundamentalAccountingConcepts  <a href="/concept-map/FundamentalAccountingConcepts"><i class="fa fa-question"></i>';
@@ -566,6 +571,7 @@ angular.module('queries', [])
                             body: data
                         });
                     });
+
                 return deferred.promise;
             };
             /**
@@ -594,44 +600,44 @@ angular.module('queries', [])
                 var queryParameters = {};
                 var headers = {};
 
-                if (parameters.format !== undefined) {
-                    queryParameters['format'] = parameters.format;
+                if (parameters['format'] !== undefined) {
+                    queryParameters['format'] = parameters['format'];
                 }
 
-                if (parameters.cik !== undefined) {
-                    queryParameters['cik'] = parameters.cik;
+                if (parameters['cik'] !== undefined) {
+                    queryParameters['cik'] = parameters['cik'];
                 }
 
-                if (parameters.ticker !== undefined) {
-                    queryParameters['ticker'] = parameters.ticker;
+                if (parameters['ticker'] !== undefined) {
+                    queryParameters['ticker'] = parameters['ticker'];
                 }
 
-                if (parameters.tag !== undefined) {
-                    queryParameters['tag'] = parameters.tag;
+                if (parameters['tag'] !== undefined) {
+                    queryParameters['tag'] = parameters['tag'];
                 }
 
-                if (parameters.sic !== undefined) {
-                    queryParameters['sic'] = parameters.sic;
+                if (parameters['sic'] !== undefined) {
+                    queryParameters['sic'] = parameters['sic'];
                 }
 
-                if (parameters.fiscalYear !== undefined) {
-                    queryParameters['fiscalYear'] = parameters.fiscalYear;
+                if (parameters['fiscalYear'] !== undefined) {
+                    queryParameters['fiscalYear'] = parameters['fiscalYear'];
                 }
 
-                if (parameters.concept !== undefined) {
-                    queryParameters['concept'] = parameters.concept;
+                if (parameters['concept'] !== undefined) {
+                    queryParameters['concept'] = parameters['concept'];
                 }
 
-                if (parameters.fiscalPeriod !== undefined) {
-                    queryParameters['fiscalPeriod'] = parameters.fiscalPeriod;
+                if (parameters['fiscalPeriod'] !== undefined) {
+                    queryParameters['fiscalPeriod'] = parameters['fiscalPeriod'];
                 }
 
                 queryParameters['map'] = 'FundamentalAccountingConcepts  <a href="/concept-map/FundamentalAccountingConcepts"><i class="fa fa-question"></i>';
 
                 queryParameters['rules'] = 'FundamentalAccountingConcepts';
 
-                if (parameters.token !== undefined) {
-                    queryParameters['token'] = parameters.token;
+                if (parameters['token'] !== undefined) {
+                    queryParameters['token'] = parameters['token'];
                 }
 
                 var url = domain + path;
@@ -657,6 +663,7 @@ angular.module('queries', [])
                             body: data
                         });
                     });
+
                 return deferred.promise;
             };
             /**
@@ -686,52 +693,52 @@ angular.module('queries', [])
                 var queryParameters = {};
                 var headers = {};
 
-                if (parameters.format !== undefined) {
-                    queryParameters['format'] = parameters.format;
+                if (parameters['format'] !== undefined) {
+                    queryParameters['format'] = parameters['format'];
                 }
 
-                if (parameters.tag !== undefined) {
-                    queryParameters['tag'] = parameters.tag;
+                if (parameters['tag'] !== undefined) {
+                    queryParameters['tag'] = parameters['tag'];
                 }
 
-                if (parameters.cik !== undefined) {
-                    queryParameters['cik'] = parameters.cik;
+                if (parameters['cik'] !== undefined) {
+                    queryParameters['cik'] = parameters['cik'];
                 }
 
-                if (parameters.ticker !== undefined) {
-                    queryParameters['ticker'] = parameters.ticker;
+                if (parameters['ticker'] !== undefined) {
+                    queryParameters['ticker'] = parameters['ticker'];
                 }
 
-                if (parameters.sic !== undefined) {
-                    queryParameters['sic'] = parameters.sic;
+                if (parameters['sic'] !== undefined) {
+                    queryParameters['sic'] = parameters['sic'];
                 }
 
-                if (parameters.fiscalYear !== undefined) {
-                    queryParameters['fiscalYear'] = parameters.fiscalYear;
+                if (parameters['fiscalYear'] !== undefined) {
+                    queryParameters['fiscalYear'] = parameters['fiscalYear'];
                 }
 
-                if (parameters.fiscalPeriod !== undefined) {
-                    queryParameters['fiscalPeriod'] = parameters.fiscalPeriod;
+                if (parameters['fiscalPeriod'] !== undefined) {
+                    queryParameters['fiscalPeriod'] = parameters['fiscalPeriod'];
                 }
 
-                if (parameters.aid !== undefined) {
-                    queryParameters['aid'] = parameters.aid;
+                if (parameters['aid'] !== undefined) {
+                    queryParameters['aid'] = parameters['aid'];
                 }
 
-                if (parameters.onlyNames !== undefined) {
-                    queryParameters['onlyNames'] = parameters.onlyNames;
+                if (parameters['onlyNames'] !== undefined) {
+                    queryParameters['onlyNames'] = parameters['onlyNames'];
                 }
 
-                if (parameters.name !== undefined) {
-                    queryParameters['name'] = parameters.name;
+                if (parameters['name'] !== undefined) {
+                    queryParameters['name'] = parameters['name'];
                 }
 
-                if (parameters.label !== undefined) {
-                    queryParameters['label'] = parameters.label;
+                if (parameters['label'] !== undefined) {
+                    queryParameters['label'] = parameters['label'];
                 }
 
-                if (parameters.token !== undefined) {
-                    queryParameters['token'] = parameters.token;
+                if (parameters['token'] !== undefined) {
+                    queryParameters['token'] = parameters['token'];
                 }
 
                 var url = domain + path;
@@ -757,6 +764,7 @@ angular.module('queries', [])
                             body: data
                         });
                     });
+
                 return deferred.promise;
             };
         };

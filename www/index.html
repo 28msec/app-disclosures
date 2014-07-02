@@ -6,16 +6,23 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Disclosures</title>
         <meta name="viewport" content="width=device-width">
-        <!-- build:css({.tmp,app}) styles/main.css -->
+        <!-- build:css({.tmp,www}) styles/main.css -->
         <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
         <link rel="stylesheet" href="/styles/index.css">
         <!-- endbuild -->
     </head>
 
     <body class="ng-cloak">
+        
+        <script type="text/javascript">
+            console.log("Loading Javascript...");
+            window.error = function(message, url, line) {
+                console.log("Error: " + message + " in " + url + " at line " + line);
+            }
+        </script>
         <div ui-view></div>
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <!-- build:js({.tmp,www}) scripts/scripts.js -->
         <script src="/bower_components/angular/angular.js"></script>
         <script src="/bower_components/ngprogress-lite/ngprogress-lite.js"></script>
         <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
@@ -35,7 +42,7 @@
         <!-- endbuild -->
 
         <!-- Typekit -->
-        <script type="text/javascript" src="//use.typekit.net/put7est.js"></script>
+        <script type="text/javascript" src="http://use.typekit.net/put7est.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     </body>
 </html>

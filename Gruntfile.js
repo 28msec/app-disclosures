@@ -90,6 +90,31 @@ module.exports = function (grunt) {
                 }
             }
         },
+        useminPrepare: {
+            html: [ '<%= config.www %>/*.html', '<%= config.www %>/partials/**/*.html' ],
+            css: '<%= config.www %>/styles/**/*.css',
+            options: {
+                dest: '<%= config.dist %>'
+            }
+        },
+        usemin: {
+            html: [ '<%= config.dist %>/*.html', '<%= config.dist %>/partials/**/*.html' ],
+            css: '<%= config.dist %>/styles/**/*.css',
+            options: {
+               dirs: ['<%= config.dist %>']
+            }
+        },
+        htmlmin: {
+            dist: {
+                     options: {},
+                     files: [{
+                             expand: true,
+                             cwd: '<%= config.www %>',
+                             src: ['*.html', 'partials/*.html'],
+                             dest: '<%= config.dist %>'
+                     }]
+            }
+        },
         'swagger-js-codegen': {
             options: {
                 apis: [
@@ -147,6 +172,28 @@ module.exports = function (grunt) {
             all: {
                 src: ['package.json', 'swagger/*']
             }
+        },
+        phonegap: {
+            config: {
+                root: 'www',
+                config: 'config.xml',
+                cordova: '.cordova',
+                html : 'index.html',
+                path: 'phonegap',
+                platforms: ['ios'],
+                maxBuffer: 2048,
+                verbose: false,
+                releases: 'releases',
+                releaseName: function(){
+                     var pkg = grunt.file.readJSON('package.json');
+                     return(pkg.name + '-' + pkg.version);
+                },
+                debuggable: false,
+                name: function(){
+                    var pkg = grunt.file.readJSON('package.json');
+                    return pkg.name;
+                }
+            }
         }
     });
 
@@ -174,6 +221,6 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('test', ['clean:pre', 'less', 'karma:1.2.9', 'clean:post', 'e2e']);
-    grunt.registerTask('build', ['clean:pre', 'swagger-js-codegen']);
+    grunt.registerTask('build', ['clean:pre', 'swagger-js-codegen', 'useminPrepare', 'concat', 'cssmin', 'htmlmin:dist', 'uglify', 'usemin']);
     grunt.registerTask('default', ['jsonlint', 'jshint', 'build', 'test']);
 };
