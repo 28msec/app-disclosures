@@ -22,7 +22,6 @@ angular.module('main', [
         console.error(error);
         ngProgressLite.done();
     });
-    console.log('run');
 }])
 .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$httpProvider', 
     function ($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider) {
@@ -43,16 +42,19 @@ angular.module('main', [
         }
     };
 
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(false);
 
     $stateProvider
     .state('home', {
         url: '/',
         templateUrl: 'partials/home.html',
         controller: 'HomeCtrl'
+    })
+    .state('about', {
+        url: '/about',
+        templateUrl: 'partials/about.html'
     });
     $urlRouterProvider.otherwise('/');
 
-    console.log('conf');
 }])
 ;
