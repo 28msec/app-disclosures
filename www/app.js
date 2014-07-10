@@ -44,17 +44,7 @@ angular.module('main', [
 
     $locationProvider.html5Mode(false);
 
-    $stateProvider
-    .state('home', {
-        url: '/',
-        templateUrl: 'partials/home.html',
-        controller: 'HomeCtrl'
-    })
-    .state('about', {
-        url: '/about',
-        templateUrl: 'partials/about.html'
-    });
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/disclosures/Policies');
 
 }])
 ;

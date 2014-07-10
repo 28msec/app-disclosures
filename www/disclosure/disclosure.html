@@ -1,0 +1,21 @@
+<header class="navbar navbar-default">
+    <div class="navbar-header">
+        <a ui-sref="disclosures.list({ list: 'Policies' })" class="navbar-brand">
+            <i class="fa fa-eye"></i>
+            Disclosures
+        </a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li ui-sref-active="active"><a ui-sref="about">About</a></li>
+        </ul>
+    </div>
+</header>
+<div class="row">
+    <div class="col-sm-5">
+        <div ui-view="left"></div>
+    </div>
+    <div class="col-sm-7">
+        <div ui-view="right"></div>
+    </div>
+</div>

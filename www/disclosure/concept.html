@@ -1,0 +1,13 @@
+<ul class="nav nav-pills nav-justified nav-menu">
+    <li><a ui-sref="disclosures.list({ list: list })" class="text-left"> << {{concept.Label}}</a></li>
+</ul>
+<div class="col-sm-12">
+    <p>
+        <input type="text" class="form-control" ng-model="search" placeholder="Search">
+    </p>
+    <div style="display: block; height: 300px; overflow-x: hidden; overflow-y: auto">
+        <div ng-repeat="c in concepts | filter:{Label:search}">
+            <a ui-sref="disclosures.concept({ list: list, concept: c.Name })">{{c.Label}}</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+@import "bootstrap.less";
+@import "ng-progress-lite.less";
+
+a {
+    cursor: pointer;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+//std margin & padding
+.std-right-margin {
+    margin-right: 15px;
+}
+
+.std-top-padding {
+    padding-top: 15px;
+}
+
+.std-left-margin {
+    margin-left: 15px;
+}
+
+//Font weigths
+h1, h2, h3, h4, h5 {
+    font-weight: 100;
+}
+
+label {
+    font-weight: normal;
+}
+
+//Navbar
+.navbar-brand {
+    color: white !important;
+    font-weight: 100;
+    
+    a {
+        color: white;
+        &:hover {
+            color: white;
+            text-decoration: none;
+        }
+    }
+}
+
+//Modals
+.modal-header {
+    background-color: @brand-primary;
+    color: white;
+
+    &.modal-header-danger {
+        background-color: @brand-danger;
+    }
+}
+
+.viewport{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+html {
+    .viewport;
+
+    body {
+        .viewport();
+    
+        div[ui-view] {
+            .viewport;
+        }   
+    }   
+}
+
+.nav-menu {
+    margin-bottom: 10px;
+    border: 1px solid @brand-primary;
+    border-top: 0px;
+    border-left: 0px;
+
+    > li > a {
+        padding: 7px 3px;
+    }
+}
