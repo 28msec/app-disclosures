@@ -1,7 +1,7 @@
 <ul class="nav nav-pills nav-justified nav-menu-sel">
-    <li class="active">
+    <li>
         <a ui-sref="disclosures.list({ list: list })" class="text-left">
-            <i class="fa fa-chevron-left"></i>
+            <i class="fa fa-chevron-left chevron-left"></i>
             {{concept.Label}}
         </a>
     </li>
@@ -10,7 +10,9 @@
     <input type="text" class="form-control" ng-model="search" placeholder="Search">
 </div>
 <div class="nav-list">
-    <div ng-repeat="c in concepts | filter:{Label:search}">
-        <a ui-sref="disclosures.concept({ list: list, concept: c.Name })">{{c.Label}}</a>
-    </div>
+    <a ng-repeat="r in concept.ReportElements | filter:{Label:search}" ui-sref="disclosures.details({ list: list, concept: concept.Name, aid: r.AccessionNumber })" ng-class="{ active: (r.AccessionNumber == aid) }">
+        <i class="fa fa-chevron-right chevron-right"></i>
+        <small class="pull-right" style="padding: 2px;">({{r.FiscalYear}}/{{r.FiscalPeriod}})</small>
+        {{r.EntityRegistrantName}} 
+    </a>
 </div>

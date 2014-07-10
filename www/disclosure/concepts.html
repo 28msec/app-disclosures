@@ -8,7 +8,8 @@
     <input type="text" class="form-control" ng-model="search" placeholder="Search">
 </div>
 <div class="nav-list">
-    <div ng-repeat="c in concepts | filter:{Label:search}">
-        <a ui-sref="disclosures.concept({ list: list, concept: c.Name })">{{c.Label}}</a>
-    </div>
+    <a ng-repeat="c in concepts | filter:{Label:search}" ui-sref="disclosures.concept({ list: list, concept: c.Name })">
+        <i class="fa fa-chevron-right chevron-right"></i>
+        {{c.Label}}
+    </a>
 </div>

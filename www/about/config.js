@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('main')
-.config(function ($stateProvider) {
+.config([ '$stateProvider', function ($stateProvider) {
     $stateProvider
     .state('about', {
         url: '/about',
         templateUrl: 'about/about.html'
     });
-});
+}]);

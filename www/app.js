@@ -6,7 +6,18 @@ angular.module('main', [
     'jmdobry.angular-cache',
     'ngProgressLite',
     
-    'queries'])
+    'queries',
+    'disclosures',
+    'constants'])
+
+.factory('API', function(QueriesAPI, DisclosuresAPI, API_URL, DEBUG, HTML5) {
+    return {
+        DEBUG: DEBUG,
+        HTML5: HTML5,
+        Queries: new QueriesAPI(API_URL + '/_queries/public/api'),
+        Disclosures: new DisclosuresAPI(API_URL + '/_queries/public')
+    };
+})
 
 .run(['$rootScope', 'ngProgressLite', function($rootScope, ngProgressLite) {
   
@@ -22,6 +33,8 @@ angular.module('main', [
         console.error(error);
         ngProgressLite.done();
     });
+
+    $rootScope.selection = { fiscalYear: [ 2013 ], fiscalPeriod: [ 'FY' ], tag: [ 'DOW30' ] };
 }])
 .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$httpProvider', 
     function ($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider) {

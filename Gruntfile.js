@@ -105,9 +105,9 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '<%= config.dist %>/scripts',
+                    cwd: '<%= config.dist %>/modules',
                     src: '*.js',
-                    dest: '<%= config.dist %>/scripts'
+                    dest: '<%= config.dist %>/modules'
                 }]
             }
         },
@@ -134,9 +134,16 @@ module.exports = function (grunt) {
                         className: 'QueriesAPI',
                         fileName: 'queries.js',
                         angularjs: true
+                    },
+                    {
+                        swagger: 'swagger/disclosures.json',
+                        moduleName: 'disclosures',
+                        className: 'DisclosuresAPI',
+                        fileName: 'disclosures.js',
+                        angularjs: true
                     }
                 ],
-                dest: '<%= config.www %>/scripts'
+                dest: '<%= config.www %>/modules'
             },
             all: {}
         },
@@ -148,7 +155,7 @@ module.exports = function (grunt) {
             options: {
                 jshintrc: '.jshintrc'
             },
-            src: ['Gruntfile.js', '<%= config.www %>/scripts/**/*.js', 'tasks/**/*.js', 'tests/**/*.js'],
+            src: ['Gruntfile.js', '<%= config.www %>/**/*.js', 'tasks/**/*.js', 'tests/**/*.js'],
         },
         karma: {
             options: {
@@ -164,7 +171,7 @@ module.exports = function (grunt) {
                     files: [
                         '<%= config.www %>/bower_components/angular/angular.js',
                         '<%= config.www %>/bower_components/angular-mocks-1.2.9/angular-mocks.js',
-                        '<%= config.www %>/scripts/queries.js'
+                        '<%= config.www %>/modules/queries.js'
                     ]
                 }
             }
@@ -181,6 +188,41 @@ module.exports = function (grunt) {
         jsonlint: {
             all: {
                 src: ['package.json', 'swagger/*']
+            }
+        },
+        ngconstant: {
+            options: {
+                space: '    '
+            },
+            server: {
+                dest: '<%= config.www %>/constants.js',
+                name: 'constants',
+                wrap: '/*jshint quotmark:double */\n"use strict";\n\n<%= __ngModule %>',
+                constants: {
+                    'API_URL': 'https://secxbrl-dev.xbrl.io/v1',
+                    'DEBUG': true,
+                    'HTML5': true
+                }
+            },
+            prod: {
+                dest: '<%= config.www %>/constants.js',
+                name: 'constants',
+                wrap: '/*jshint quotmark:double */\n"use strict";\n\n<%= __ngModule %>',
+                constants: {
+                    'API_URL': 'https://secxbrl.xbrl.io/v1',
+                    'DEBUG': false,
+                    'HTML5': true
+                }
+            },
+            ios: {
+                dest: '<%= config.www %>/constants.js',
+                name: 'constants',
+                wrap: '/*jshint quotmark:double */\n"use strict";\n\n<%= __ngModule %>',
+                constants: {
+                    'API_URL': 'https://secxbrl.xbrl.io/v1',
+                    'DEBUG': false,
+                    'HTML5': false
+                }
             }
         },
         phonegap: {

@@ -64,6 +64,10 @@
                             "required": false,
                             "type": "string",
                             "paramType": "query"
+                        },
+                        {
+                            "name": "_method",
+                            "paramType": "query"
                         }
                     ],
                     "responseMessages": [
@@ -202,6 +206,10 @@
                             "description": "The token of the current session (if accessing entities beyond DOW30)",
                             "required": false,
                             "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "_method",
                             "paramType": "query"
                         }
                     ],
@@ -365,6 +373,10 @@
                             "required": false,
                             "type": "string",
                             "paramType": "query"
+                        },
+                        {
+                            "name": "_method",
+                            "paramType": "query"
                         }
                     ],
                     "responseMessages": [
@@ -506,6 +518,10 @@
                             "description": "The token of the current session (if accessing entities beyond DOW30)",
                             "required": false,
                             "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "_method",
                             "paramType": "query"
                         }
                     ],
@@ -650,6 +666,10 @@
                             "required": false,
                             "type": "string",
                             "paramType": "query"
+                        },
+                        {
+                            "name": "_method",
+                            "paramType": "query"
                         }
                     ],
                     "responseMessages": [
@@ -693,7 +713,7 @@
             "operations": [
                 {
                     "method": "POST",
-                    "summary": "Retrieve the fact table for a given set of filings and a report.",
+                    "summary": "Retrieve the fact table for a given report. Filters can be overriden. Filters MUST be overriden if the report is not already filtering.",
                     "nickname": "listFactTableForReport",
                     "parameters": [
                         {
@@ -776,8 +796,23 @@
                             "required": false,
                             "type": "string",
                             "enum": [
-                                "FundamentalAccountingConcepts  <a href=\"/concept-map/FundamentalAccountingConcepts\"><i class=\"fa fa-question\"></i>"
+                                "FundamentalAccountingConcepts",
+                                "null"
                               ],
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "validate",
+                            "description": "Validate and stamp facts accordingly",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "true",
+                                "false"
+                              ]
+                        },
+                        {
+                            "name": "_method",
                             "paramType": "query"
                         }
                     ],
@@ -804,6 +839,152 @@
                             "title": "Fact Table for the Fundamental Accounting Concepts of COCA COLA's 2010..2013 10-K filings as CSV.",
                             "description": "Retrieve the fact table for a particular component. Return the result as CSV.",
                             "request": "[API_URL]/_queries/public/api/facttable-for-report.jq?_method=POST&report=FundamentalAccountingConcepts&ticker=ko&fiscalYear=2013&fiscalYear=2012&fiscalYear=2011&fiscalYear=2010&fiscalPeriod=FY&format=csv",
+                            "response": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/spreadsheet-for-report.jq",
+            "description": "Retrieve a business-friendly spreadsheet for a Report",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Retrieve the business-friendly spreadsheet for a report. Filters can be overriden. Filters MUST be overriden if the report is not already filtering.",
+                    "nickname": "listSpreadsheetForReport",
+                    "parameters": [
+                        {
+                            "name": "format",
+                            "description": "The result format",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "json",
+                                "csv",
+                                "xml",
+                                "excel"
+                            ],
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "cik",
+                            "description": "The CIK of the entity",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "ticker",
+                            "description": "The ticker of the entity",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "tag",
+                            "description": "The tag to filter entities",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "DOW30",
+                                "SP500",
+                                "FORTUNE100",
+                                "PJI",
+                                "ALL"
+                            ],
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "sic",
+                            "description": "The industry group",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "fiscalYear",
+                            "description": "The fiscal year of the fact to retrieve (default: LATEST)",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query",
+                            "enum": [
+                                "year (e.g. 2011)",
+                                "LATEST",
+                                "ALL"
+                            ]
+                        },
+                        {
+                            "name": "fiscalPeriod",
+                            "description": "The fiscal period of the fact to retrieve (default: FY)",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "Q1",
+                                "Q2",
+                                "Q3",
+                                "FY",
+                                "ALL"
+                            ],
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "report",
+                            "description": "The name of the report to be used (e.g. FundamentalAccountingConcepts)",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "FundamentalAccountingConcepts",
+                                "null"
+                              ],
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "eliminate",
+                            "description": "Wwether to eliminate empty rows/colummns",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "true",
+                                "false"
+                              ],
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "validate",
+                            "description": "Validate and stamp facts accordingly",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "true",
+                                "false"
+                              ],
+                            "paramType": "query"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 401,
+                            "message": "Unauthorized: the specified project token is invalid, expired, or has insufficient privileges",
+                            "responseModel": "Error"
+                        },
+                        {
+                            "code": 500,
+                            "message": "An internal error occurred during the processing of the request.",
+                            "responseModel": "Error"
+                        }
+                    ],
+                    "successMessages": [
+                        {
+                            "code": 200,
+                            "message": "Return the spreadsheet for the given component"
+                        }
+                    ],
+                    "examples": [
+                        {
+                            "title": "Spreadsheet for the Fundamental Accounting Concepts of COCA COLA's FY 2010..2013.",
+                            "description": "Retrieve the spreadsheet for a particular report. Return the result as JSON, with eliminated empty rows/columns.",
+                            "request": "[API_URL]/_queries/public/api/spreadsheet-for-report.jq?_method=POST&report=FundamentalAccountingConcepts&ticker=ko&fiscalYear=2013&fiscalYear=2012&fiscalYear=2011&fiscalYear=2010&fiscalPeriod=FY&format=csv&eliminate=true",
                             "response": ""
                         }
                     ]
@@ -901,12 +1082,20 @@
                             "paramType": "query"
                         },
                         {
+                            "name": "aid",
+                            "description": "The id of the filing",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
                             "name": "map",
                             "description": "The concept map that should be used to resolve the concept (default: none)",
                             "required": false,
                             "type": "string",
                             "enum": [
-                                "FundamentalAccountingConcepts  <a href=\"/concept-map/FundamentalAccountingConcepts\"><i class=\"fa fa-question\"></i>"
+                                "FundamentalAccountingConcepts",
+                                "null"
                               ],
                             "paramType": "query"
                         },
@@ -916,8 +1105,25 @@
                             "required": false,
                             "type": "string",
                             "enum": [
-                                "FundamentalAccountingConcepts"
+                                "FundamentalAccountingConcepts",
+                                "null"
                               ],
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "prefix:dimension",
+                            "pattern": "[^:]+:[^:]+",
+                            "description": "The name of a dimension used for filtering. Accepted format: prefix:dimension. As a value, the value of the dimension or ALL can be provided if all facts with this dimension should be retrieved",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "prefix:dimension::default",
+                            "pattern": "[^:]+:[^:]+::default",
+                            "description": "The default value of the dimension [prefix:dimension] that should be returned if the dimension was not provided explicitly for a fact. Accepted format: prefix:dimension::default",
+                            "required": false,
+                            "type": "string",
                             "paramType": "query"
                         },
                         {
@@ -925,6 +1131,10 @@
                             "description": "The token of the current session (if accessing entities beyond DOW30)",
                             "required": false,
                             "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "_method",
                             "paramType": "query"
                         }
                     ],
@@ -1095,6 +1305,10 @@
                             "description": "The token of the current session (if accessing entities beyond DOW30)",
                             "required": false,
                             "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "_method",
                             "paramType": "query"
                         }
                     ],

@@ -5841,54 +5841,70 @@ label {
 .viewport {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 html {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 html body {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 html body div[ui-view] {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .nav-menu {
-  border: 1px solid #428bca;
-  border-top: 0px;
-  border-left: 0px;
+  margin: 5px 0px;
 }
 .nav-menu > li > a {
+  border: 1px solid #ecf0f1;
+  border-left: 0px;
   padding: 7px 3px;
   margin: 0px;
 }
+.nav-menu > li.active > a {
+  border-color: #428bca;
+}
 .nav-menu-sel {
-  border: 1px solid #428bca;
-  border-top: 0px;
-  border-left: 0px;
+  margin: 5px 0px;
 }
 .nav-menu-sel > li > a {
-  padding: 7px 15px;
-  text-align: left;
+  border: 1px solid #ecf0f1;
+  border-left: 0px;
+  padding: 7px 10px;
   margin: 0px;
+  text-align: left;
+}
+.nav-menu-sel > li.active > a {
+  border-color: #428bca;
 }
 .nav-search {
   padding: 10px;
   background-color: #ecf0f1;
 }
 .nav-list {
-  height: 400px;
   padding: 10px;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
-.nav-list > div {
+.nav-list > a {
   border-bottom: 1px solid #ecf0f1;
   padding: 5px 0px;
   margin: 5px 0px;
+  display: block;
+}
+.nav-list > a.active {
+  color: #222222;
+  font-weight: bold;
+}
+.chevron-left {
+  float: left;
+  margin: 4px 2px;
+}
+.chevron-right {
+  float: right;
+  margin: 4px 2px;
 }

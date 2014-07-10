@@ -58,7 +58,7 @@ label {
 .viewport{
     height: 100%;
     width: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 html {
@@ -74,25 +74,33 @@ html {
 }
 
 .nav-menu {
-    border: 1px solid @brand-primary;
-    border-top: 0px;
-    border-left: 0px;
+    margin: 5px 0px;
 
     > li > a {
+        border: 1px solid @clouds;
+        border-left: 0px;
         padding: 7px 3px;
         margin: 0px;
+    }
+
+    > li.active > a {
+        border-color: @brand-primary;
     }
 }
 
 .nav-menu-sel {
-    border: 1px solid @brand-primary;
-    border-top: 0px;
-    border-left: 0px;
+    margin: 5px 0px;
 
     > li > a {
-        padding: 7px 15px;
-        text-align: left;
+        border: 1px solid @clouds;
+        border-left: 0px;
+        padding: 7px 10px;
         margin: 0px;
+        text-align: left;
+    }
+
+    > li.active > a {
+        border-color: @brand-primary;
     }
 }
 
@@ -102,14 +110,27 @@ html {
 }
 
 .nav-list {
-    height: 400px;
     padding: 10px;
-    overflow-x: hidden;
-    overflow-y: auto;
 
-    > div {
+    > a {
         border-bottom: 1px solid @clouds;
         padding: 5px 0px;
         margin:  5px 0px;
+        display: block;
     }
+
+    > a.active {
+        color: @gray-darker;
+        font-weight: bold;
+    }
+}
+
+.chevron-left {
+    float: left;
+    margin: 4px 2px;
+}
+
+.chevron-right {
+    float: right;
+    margin: 4px 2px;
 }
