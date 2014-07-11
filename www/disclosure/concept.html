@@ -10,9 +10,12 @@
     <input type="text" class="form-control" ng-model="search" placeholder="Search">
 </div>
 <div class="nav-list">
-    <a ng-repeat="r in concept.ReportElements | filter:{Label:search}" ui-sref="disclosures.details({ list: list, concept: concept.Name, aid: r.AccessionNumber })" ng-class="{ active: (r.AccessionNumber == aid) }">
+    <a ng-repeat="r in concept.ReportElements | filter:search" ui-sref="disclosures.details({ list: list, concept: concept.Name, aid: r.AccessionNumber })" ng-class="{ active: (r.AccessionNumber == aid) }">
         <i class="fa fa-chevron-right chevron-right"></i>
         <small class="pull-right" style="padding: 2px;">({{r.FiscalYear}}/{{r.FiscalPeriod}})</small>
         {{r.EntityRegistrantName}} 
     </a>
+    <span ng-show="concept.ReportElements.length == 0">
+        This concept was not filed for the current <a ui-sref="filter">Filter</a>.
+    </span>
 </div>
