@@ -1,6 +1,6 @@
 /*global angular:false */
 angular.module('disclosures', [])
-    .factory('DisclosuresAPI', function($q, $http, $rootScope) {
+    .factory('DisclosuresAPI', ['$q', '$http', '$rootScope', function($q, $http, $rootScope) {
         'use strict';
 
         /**
@@ -154,4 +154,4 @@ angular.module('disclosures', [])
                 return deferred.promise;
             };
         };
-    });
+    }]);

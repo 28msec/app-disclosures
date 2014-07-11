@@ -22,6 +22,7 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        aws: grunt.file.readJSON('grunt-aws.json'),
         config: config,
         watch: {
             less: {
@@ -96,30 +97,41 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= config.www %>',
-                    src: [ '*.html', 'partials/*.html' ],
+                    src: [ '*.html', '**/*.html' ],
                     dest: '<%= config.dist %>'
                 }]
             }
         },
-        ngmin: {
+        // Put files not handled in other tasks here
+        copy: {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '<%= config.dist %>/modules',
-                    src: '*.js',
-                    dest: '<%= config.dist %>/modules'
+                    dot: true,
+                    cwd: '<%=config.www %>',
+                    dest: '<%= config.dist %>',
+                    src: [
+                        '*.{ico,png,txt}',
+                        '.htaccess',
+                        'images/**/*.{png,jpg,jpeg,gif,webp,svg}'
+                    ]
+                }, {
+                    expand: true,
+                    cwd: '<%= config.www %>/bower_components/font-awesome/fonts',
+                    dest: '<%= config.dist %>/fonts',
+                    src: ['*']
                 }]
             }
         },
         useminPrepare: {
-            html: [ '<%= config.www %>/*.html', '<%= config.www %>/partials/**/*.html' ],
+            html: [ '<%= config.www %>/*.html', '<%= config.www %>/**/*.html' ],
             css: '<%= config.www %>/styles/**/*.css',
             options: {
                 dest: '<%= config.dist %>'
             }
         },
         usemin: {
-            html: [ '<%= config.dist %>/*.html', '<%= config.dist %>/partials/**/*.html' ],
+            html: [ '<%= config.dist %>/*.html', '<%= config.dist %>/**/*.html' ],
             css: '<%= config.dist %>/styles/**/*.css',
             options: {
                dirs: ['<%= config.dist %>']
@@ -155,7 +167,7 @@ module.exports = function (grunt) {
             options: {
                 jshintrc: '.jshintrc'
             },
-            src: ['Gruntfile.js', '<%= config.www %>/**/*.js', 'tasks/**/*.js', 'tests/**/*.js'],
+            src: ['Gruntfile.js', '<%= config.www %>/**/*.js', '!<%= config.www %>/bower_components/**/*.js', 'tasks/**/*.js', 'tests/**/*.js']
         },
         karma: {
             options: {
@@ -225,6 +237,30 @@ module.exports = function (grunt) {
                 }
             }
         },
+        s3: {
+            options: {
+                key: '<%= aws.key %>',
+                secret: '<%= aws.secret %>',
+                access: 'public-read',
+                maxOperations: 5
+            },
+            test: {
+                bucket: '<%= aws.bucket_test %>',
+                upload: [{
+                    src: '<%= config.dist %>/**/*',
+                    dest: '',
+                    rel: '<%= config.dist %>/',
+                }]
+            },
+            prod: {
+                bucket: '<%= aws.bucket_prod %>',
+                upload: [{
+                    src: '<%= config.dist %>/**/*',
+                    dest: '',
+                    rel: '<%= config.dist %>/',
+                }]
+            }
+        },
         phonegap: {
             config: {
                 root: 'www',
@@ -264,7 +300,7 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
-            'swagger-js-codegen',
+            //'swagger-js-codegen',
             'less',
             'connect:livereload',
             'open',
@@ -273,6 +309,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('test', ['clean:pre', 'less', 'karma:1.2.9', 'clean:post', 'e2e']);
-    grunt.registerTask('build', ['clean:pre', 'less', 'swagger-js-codegen', 'useminPrepare', 'concat', 'ngmin', 'cssmin', 'htmlmin', 'uglify', 'usemin']);
+    grunt.registerTask('build', ['clean:pre', 'less', /*'swagger-js-codegen', */ 'useminPrepare', 'concat', 'copy', 'cssmin', 'htmlmin', 'uglify', 'usemin']);
+    grunt.registerTask('deploy:test', [ 'build:test', 's3:test' ]);
     grunt.registerTask('default', ['jsonlint', 'jshint', 'build', 'test']);
 };

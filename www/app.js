@@ -10,14 +10,14 @@ angular.module('main', [
     'disclosures',
     'constants'])
 
-.factory('API', function(QueriesAPI, DisclosuresAPI, API_URL, DEBUG, HTML5) {
+.factory('API', ['QueriesAPI', 'DisclosuresAPI', 'API_URL', 'DEBUG', 'HTML5', function(QueriesAPI, DisclosuresAPI, API_URL, DEBUG, HTML5) {
     return {
         DEBUG: DEBUG,
         HTML5: HTML5,
         Queries: new QueriesAPI(API_URL + '/_queries/public/api'),
         Disclosures: new DisclosuresAPI(API_URL + '/_queries/public')
     };
-})
+}])
 
 .run(['$rootScope', 'ngProgressLite', function($rootScope, ngProgressLite) {
   

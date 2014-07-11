@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('main')
-.controller('DisclosureCtrl', ['$scope', '$rootScope', '$stateParams', function($scope, $rootScope, $stateParams){
-}])
+.controller('DisclosureCtrl', function(){
+})
 .controller('DisclosureConceptsCtrl', ['$scope', '$stateParams', 'concepts', function($scope, $stateParams, concepts){
     $scope.list = $stateParams.list;
     $scope.concepts = concepts;
