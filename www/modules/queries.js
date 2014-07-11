@@ -1,6 +1,6 @@
 /*global angular:false */
 angular.module('queries', [])
-    .factory('QueriesAPI', function($q, $http, $rootScope) {
+    .factory('QueriesAPI', ['$q', '$http', '$rootScope', function($q, $http, $rootScope) {
         'use strict';
 
         /**
@@ -993,4 +993,4 @@ angular.module('queries', [])
                 return deferred.promise;
             };
         };
-    });
+    }]);

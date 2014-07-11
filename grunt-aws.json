@@ -1,0 +1,7 @@
+{
+  "key": "AKIAJQDKG6VXEV2AI3ZA", 
+  "secret": "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",
+  "region": "us-east-1",
+  "bucket_prod": "app-disclosures",
+  "bucket_test": "app-disclosures-test"
+}

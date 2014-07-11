@@ -12,16 +12,16 @@ angular.module('main')
     .state('disclosures.list', {
         url: '/:list',
         views: {
-            "left": {
+            'left': {
                 templateUrl: 'disclosure/concepts.html',
                 controller: 'DisclosureConceptsCtrl',
                 resolve: {
                     concepts: ['$rootScope', '$stateParams', 'API', function($rootScope, $stateParams, API) {
-                        return API.Disclosures.concepts({ list: ($stateParams.list == "All" ? null : $stateParams.list) });
+                        return API.Disclosures.concepts({ list: ($stateParams.list === 'All' ? null : $stateParams.list) });
                     }]
                 }
             },
-            "right": {
+            'right': {
                 templateUrl: 'disclosure/not-selected.html',
                 controller: 'DisclosureNotSelectedCtrl'
             }
@@ -30,7 +30,7 @@ angular.module('main')
     .state('disclosures.concept', {
         url: '/:list/:concept',
         views: {
-            "left": {
+            'left': {
                 templateUrl: 'disclosure/concept.html',
                 controller: 'DisclosureConceptCtrl',
                 resolve: {
@@ -66,7 +66,7 @@ angular.module('main')
                     }]
                 }
             },
-            "right": {
+            'right': {
                 templateUrl: 'disclosure/not-selected.html',
                 controller: 'DisclosureNotSelectedCtrl'
             }
@@ -75,7 +75,7 @@ angular.module('main')
     .state('disclosures.details', {
         url: '/:list/:concept/:aid',
         views: {
-            "left": {
+            'left': {
                 templateUrl: 'disclosure/concept.html',
                 controller: 'DisclosureConceptCtrl',
                 resolve: {
@@ -111,7 +111,7 @@ angular.module('main')
                     }]
                 }
             },
-            "right": {
+            'right': {
                 templateUrl: 'disclosure/details.html',
                 controller: 'DisclosureDetailsCtrl',
                 resolve: {
