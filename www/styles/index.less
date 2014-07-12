@@ -73,40 +73,71 @@ html {
     }   
 }
 
-.nav-menu {
-    margin: 5px 0px;
+.secondmenu {
+    background: @body-bg;
+    width: 100%;
+    z-index: 1000;
+    position: absolute;
+    top: 0px;
 
-    > li > a {
-        border: 1px solid @clouds;
-        border-left: 0px;
-        padding: 7px 3px;
-        margin: 0px;
+    a { 
+        text-decoration: none;
+        cursor: pointer;
     }
 
-    > li.active > a {
-        border-color: @brand-primary;
+    .nav-menu {
+        margin: 5px 0px;
+        padding: 0px;
+        width: 100%;
+
+        > tbody > tr > td {
+            width: 25%;
+            padding: 0px;
+            border: 1px solid @clouds;
+            
+            > a {
+                padding: 7px 3px;
+                cursor: pointer;
+                text-decoration: none;
+                text-align: center;
+                width: 100%;
+                display: block;
+            }
+            
+            &.active > a {
+                background: @brand-primary;
+                color: @body-bg;
+            }
+        }
     }
-}
 
-.nav-menu-sel {
-    margin: 5px 0px;
+    .nav-menu-sel {
+        margin: 5px 0px;
+        padding: 0px;
+        width: 100%;
 
-    > li > a {
-        border: 1px solid @clouds;
-        border-left: 0px;
-        padding: 7px 10px;
-        margin: 0px;
-        text-align: left;
+        > tbody > tr > td {
+            width: 25%;
+            padding: 0px;
+            border: 1px solid @clouds;
+
+            > a {
+                padding: 7px 10px;
+                margin: 0px;
+                text-align: left;
+                width: 100%;
+                display: block;
+                overflow-x: hidden;
+                white-space: nowrap;
+                text-overflow: hidden;
+            }
+        }
     }
 
-    > li.active > a {
-        border-color: @brand-primary;
+    .nav-search {
+        padding: 10px;
+        background-color: @clouds;
     }
-}
-
-.nav-search {
-    padding: 10px;
-    background-color: @clouds;
 }
 
 .nav-list {
@@ -117,6 +148,8 @@ html {
         padding: 5px 0px;
         margin:  5px 0px;
         display: block;
+        text-decoration: none;
+        cursor: pointer;
     }
 
     > a.active {
@@ -133,4 +166,31 @@ html {
 .chevron-right {
     float: right;
     margin: 4px 2px;
+}
+
+.navbar-right {
+    padding-right: 20px;
+}
+
+.wrapper {
+    margin-top: -50px;
+    padding-top: 50px;
+    top: 50px;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+
+.wrapper-left {
+    padding-top: 100px;
+    display: inline-block;
+    width: 25%;
+}
+
+.wrapper-right {
+    padding-top: 0px;
+    left: 0.8%;
+    display: inline-block;
+    width: 74%;
 }

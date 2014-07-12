@@ -5,6 +5,7 @@ angular.module('main', [
     'ui.bootstrap',
     'jmdobry.angular-cache',
     'ngProgressLite',
+    'navbar-toggle',
     
     'queries',
     'disclosures',

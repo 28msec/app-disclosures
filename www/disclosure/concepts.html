@@ -1,11 +1,15 @@
-<ul class="nav nav-pills nav-justified nav-menu">
-    <li ui-sref-active="active"><a ui-sref="disclosures.list({ list: 'Policies' })">Policies</a></li>
-    <li ui-sref-active="active"><a ui-sref="disclosures.list({ list: 'Footnotes' })">Footnotes</a></li>
-    <li ui-sref-active="active"><a ui-sref="disclosures.list({ list: 'Disclosures' })">Disclosures</a></li>
-    <li ui-sref-active="active"><a ui-sref="disclosures.list({ list: 'All' })">ALL</a></li>          
-</ul>
-<div class="nav-search">
-    <input type="text" class="form-control" ng-model="search" placeholder="Search">
+<div class="secondmenu">
+    <table class="nav-menu">
+    <tr>
+        <td ui-sref-active="active"><a ui-sref="disclosures.list({ list: 'Policies' })">Policies</a></td>
+        <td ui-sref-active="active"><a ui-sref="disclosures.list({ list: 'Footnotes' })">Footnotes</a></td>
+        <td ui-sref-active="active"><a ui-sref="disclosures.list({ list: 'Disclosures' })">Disclosures</a></td>
+        <td ui-sref-active="active"><a ui-sref="disclosures.list({ list: 'All' })">ALL</a></td>          
+    </tr>
+    </table>
+    <div class="nav-search">
+        <input type="text" class="form-control" ng-model="search" placeholder="Search">
+    </div>
 </div>
 <div class="nav-list">
     <a ng-repeat="c in concepts | filter:search" ui-sref="disclosures.concept({ list: list, concept: c.Name })">

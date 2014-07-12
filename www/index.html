@@ -12,14 +12,14 @@
         <!-- endbuild -->
     </head>
 
-    <body class="ng-cloak">
+    <body class="ng-cloak height100percent">
         <script type="text/javascript">
             console.log("Loading Javascript...");
             window.error = function(message, url, line) {
                 console.log("Error: " + message + " in " + url + " at line " + line);
             }
         </script>
-        <div ui-view></div>
+        <div ui-view class="height100percent"></div>
 
         <!-- build:js({.tmp,www}) scripts/scripts.js -->
         <script src="bower_components/angular/angular.js"></script>
@@ -31,6 +31,7 @@
         <script src="bower_components/angular-cache/dist/angular-cache.js"></script>
 
         <!-- Modules -->
+        <script src="modules/navbar-toggle.js"></script>
         <script src="modules/queries.js"></script>
         <script src="modules/disclosures.js"></script>
 

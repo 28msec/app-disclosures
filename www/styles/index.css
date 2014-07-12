@@ -5858,32 +5858,60 @@ html body div[ui-view] {
   width: 100%;
   overflow-x: hidden;
 }
-.nav-menu {
-  margin: 5px 0px;
+.secondmenu {
+  background: #ffffff;
+  width: 100%;
+  z-index: 1000;
+  position: absolute;
+  top: 0px;
 }
-.nav-menu > li > a {
+.secondmenu a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.secondmenu .nav-menu {
+  margin: 5px 0px;
+  padding: 0px;
+  width: 100%;
+}
+.secondmenu .nav-menu > tbody > tr > td {
+  width: 25%;
+  padding: 0px;
   border: 1px solid #ecf0f1;
-  border-left: 0px;
+}
+.secondmenu .nav-menu > tbody > tr > td > a {
   padding: 7px 3px;
-  margin: 0px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  display: block;
 }
-.nav-menu > li.active > a {
-  border-color: #428bca;
+.secondmenu .nav-menu > tbody > tr > td.active > a {
+  background: #428bca;
+  color: #ffffff;
 }
-.nav-menu-sel {
+.secondmenu .nav-menu-sel {
   margin: 5px 0px;
+  padding: 0px;
+  width: 100%;
 }
-.nav-menu-sel > li > a {
+.secondmenu .nav-menu-sel > tbody > tr > td {
+  width: 25%;
+  padding: 0px;
   border: 1px solid #ecf0f1;
-  border-left: 0px;
+}
+.secondmenu .nav-menu-sel > tbody > tr > td > a {
   padding: 7px 10px;
   margin: 0px;
   text-align: left;
+  width: 100%;
+  display: block;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: hidden;
 }
-.nav-menu-sel > li.active > a {
-  border-color: #428bca;
-}
-.nav-search {
+.secondmenu .nav-search {
   padding: 10px;
   background-color: #ecf0f1;
 }
@@ -5895,6 +5923,8 @@ html body div[ui-view] {
   padding: 5px 0px;
   margin: 5px 0px;
   display: block;
+  text-decoration: none;
+  cursor: pointer;
 }
 .nav-list > a.active {
   color: #222222;
@@ -5907,4 +5937,27 @@ html body div[ui-view] {
 .chevron-right {
   float: right;
   margin: 4px 2px;
+}
+.navbar-right {
+  padding-right: 20px;
+}
+.wrapper {
+  margin-top: -50px;
+  padding-top: 50px;
+  top: 50px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+.wrapper-left {
+  padding-top: 100px;
+  display: inline-block;
+  width: 25%;
+}
+.wrapper-right {
+  padding-top: 0px;
+  left: 0.8%;
+  display: inline-block;
+  width: 74%;
 }
