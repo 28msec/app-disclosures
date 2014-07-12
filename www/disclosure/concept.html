@@ -1,15 +1,15 @@
-<ul class="nav nav-pills nav-justified nav-menu-sel">
-    <li>
-        <a ui-sref="disclosures.list({ list: list })" class="text-left">
-            <i class="fa fa-chevron-left chevron-left"></i>
-            {{concept.Label}}
-        </a>
-    </li>
-</ul>
-<div class="nav-search">
-    <input type="text" class="form-control" ng-model="search" placeholder="Search">
+<div class="secondmenu">
+    <table class="nav-menu-sel">
+    <tr>
+        <td><a ui-sref="disclosures.list({ list: list })" class="text-left"><i class="fa fa-chevron-left chevron-left"></i> Back</a></td>
+    </tr>
+    </table>
+    <div class="nav-search">
+        <input type="text" class="form-control" ng-model="search" placeholder="Search">
+    </div>
 </div>
 <div class="nav-list">
+    <legend>{{concept.Label}}</legend>
     <a ng-repeat="r in concept.ReportElements | filter:search" ui-sref="disclosures.details({ list: list, concept: concept.Name, aid: r.AccessionNumber })" ng-class="{ active: (r.AccessionNumber == aid) }">
         <i class="fa fa-chevron-right chevron-right"></i>
         <small class="pull-right" style="padding: 2px;">({{r.FiscalYear}}/{{r.FiscalPeriod}})</small>

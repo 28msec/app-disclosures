@@ -10,7 +10,7 @@ module.exports = function (grunt) {
     require('time-grunt')(grunt);
     grunt.task.loadTasks('tasks');
     
-    var LIVERELOAD_PORT = 35729;
+    var LIVERELOAD_PORT = 35728;
     var lrSnippet = require('connect-livereload')({
         port: LIVERELOAD_PORT
     });
@@ -44,7 +44,7 @@ module.exports = function (grunt) {
         //Connect
         connect: {
             options: {
-                port: 9000,
+                port: 9008,
                 hostname: '0.0.0.0'
             },
             livereload: {
