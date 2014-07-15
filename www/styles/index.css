@@ -5862,7 +5862,7 @@ html body div[ui-view] {
   overflow-x: hidden;
 }
 .nav-filter {
-  margin: 5px;
+  margin: 5px 5px 0px 0px;
   padding: 1px 10px !important;
   text-align: left;
   background: #34495e;
