@@ -14,7 +14,6 @@
 
     <body class="ng-cloak height100percent">
         <script type="text/javascript">
-            console.log("Loading Javascript...");
             window.error = function(message, url, line) {
                 console.log("Error: " + message + " in " + url + " at line " + line);
             }
@@ -34,6 +33,7 @@
         <script src="modules/navbar-toggle.js"></script>
         <script src="modules/queries.js"></script>
         <script src="modules/disclosures.js"></script>
+        <script src="modules/api.js"></script>
 
         <script src="constants.js"></script>
         <script src="app.js"></script>
@@ -42,9 +42,6 @@
         <!-- disclosure -->
         <script src="disclosure/config.js"></script>
         <script src="disclosure/disclosure.js"></script>
-
-        <!-- filter -->
-        <script src="filter/config.js"></script>
 
         <!-- about -->
         <script src="about/config.js"></script>

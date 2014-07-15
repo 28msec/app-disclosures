@@ -5831,11 +5831,14 @@ label {
   color: white;
   text-decoration: none;
 }
-.modal-header {
+.modal-dialog {
+  width: 700px;
+}
+.modal-dialog .modal-header {
   background-color: #428bca;
   color: white;
 }
-.modal-header.modal-header-danger {
+.modal-dialog .modal-header.modal-header-danger {
   background-color: #d9534f;
 }
 .viewport {
@@ -5857,6 +5860,23 @@ html body div[ui-view] {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
+}
+.nav-filter {
+  margin: 5px;
+  padding: 1px 10px !important;
+  text-align: left;
+  background: #34495e;
+  border-radius: 5px;
+}
+.nav-filter:hover {
+  background: #2980b9 !important;
+}
+.nav-filter > div {
+  max-width: 400px;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .secondmenu {
   background: #ffffff;
@@ -5960,4 +5980,47 @@ html body div[ui-view] {
   display: inline-block;
   width: 68%;
   float: right;
+}
+ul.selector {
+  padding: 3px 0px;
+  margin: 0;
+  list-style: none;
+  border: 1px solid #ecf0f1;
+  background: white;
+  border-radius: 3px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+ul.selector li {
+  display: block;
+  cursor: pointer;
+  padding: 1px 5px;
+}
+ul.selector li.selected {
+  background: #428bca;
+  color: white;
+}
+ul.selector li.disabled {
+  color: #bdc3c7;
+}
+ul.selector li.disabled:after {
+  float: right;
+  font-size: smaller;
+  padding: 1px;
+  content: "N/A";
+}
+#comparison-filter .alert {
+  display: inline-block;
+  padding: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+#comparison-filter .alert .close {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#comparison-setfilter {
+  border-left: 1px solid #ecf0f1;
 }

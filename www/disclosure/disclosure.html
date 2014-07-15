@@ -13,7 +13,26 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-            <li ui-sref-active="active"><a ui-sref="filter">Filter</a></li>
+            <li ng-show="initialized">
+                <a class="nav-filter" ng-click="filter()">
+                    <div>
+                        <span ng-if="selection.tag.length > 0">
+                            Tags: <span ng-repeat="t in selection.tag">{{t}} </span>
+                        </span>
+                        <span ng-if="selection.sic.length > 0">
+                            SIC: <span ng-repeat="t in selection.sic">{{t}} </span>
+                        </span>
+                        <span ng-if="selection.cik.length > 0">
+                            CIK: <span ng-repeat="t in selection.cik">{{t}} </span>
+                        </span>                        
+                    </div>
+                    <div class="small">
+                        Fiscal Years: <span ng-repeat="t in selection.fiscalYear">{{t}} </span>
+                        /
+                        Fiscal Periods: <span ng-repeat="t in selection.fiscalPeriod">{{t}} </span>
+                    </div>
+                </a>
+            </li>
             <li ui-sref-active="active"><a ui-sref="about">About</a></li>
         </ul>
     </div>
