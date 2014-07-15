@@ -5,7 +5,7 @@ angular.module('main')
 
     $stateProvider
     .state('disclosures', {
-        url: '/disclosures',
+        url: '/disclosures?fiscalYear&fiscalPeriod&cik&tag&sic',
         templateUrl: 'disclosure/disclosure.html',
         controller: 'DisclosureCtrl'
     })
@@ -115,14 +115,11 @@ angular.module('main')
                 templateUrl: 'disclosure/details.html',
                 controller: 'DisclosureDetailsCtrl',
                 resolve: {
-                    fact: ['$rootScope', '$stateParams', 'API', function($rootScope, $stateParams, API) {
+                    fact: ['$stateParams', 'API', function($stateParams, API) {
                         var params = {
                             map: 'Disclosures',
-                            rules: 'Disclosures',
                             concept: $stateParams.concept,
-                            aid: $stateParams.aid,
-                            fiscalYear: $rootScope.selection.fiscalYear,
-                            fiscalPeriod: $rootScope.selection.fiscalPeriod
+                            aid: $stateParams.aid
                         };
                         return API.Queries.listFacts(params);
                     }]

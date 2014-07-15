@@ -45,13 +45,17 @@ label {
     }
 }
 
-//Modals
-.modal-header {
-    background-color: @brand-primary;
-    color: white;
+.modal-dialog {
+    width: 700px;
 
-    &.modal-header-danger {
-        background-color: @brand-danger;
+    //Modals
+    .modal-header {
+        background-color: @brand-primary;
+        color: white;
+
+        &.modal-header-danger {
+            background-color: @brand-danger;
+        }
     }
 }
 
@@ -71,6 +75,26 @@ html {
             .viewport;
         }   
     }   
+}
+
+.nav-filter {
+    margin: 5px;
+    padding: 1px 10px !important; 
+    text-align: left;
+    background: @wet-asphalt;
+    border-radius: 5px;
+
+    &:hover {
+        background: @belize-hole !important;
+    }
+
+    > div {
+        max-width: 400px;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 }
 
 .secondmenu {
@@ -168,6 +192,7 @@ html {
     margin: 4px 2px;
 }
 
+//fix for bootstrap 3
 .navbar-right {
     padding-right: 20px;
 }
@@ -193,4 +218,55 @@ html {
     display: inline-block;
     width: 68%;
     float: right;
+}
+
+//Selector
+ul.selector {
+    padding: 3px 0px; 
+    margin: 0; 
+    list-style: none;
+    border: 1px solid @clouds;
+    background: white;
+    border-radius: 3px;
+    .box-sizing(border-box);
+    overflow-x: hidden;
+    
+    li {
+        display: block;
+        cursor: pointer;
+        padding: 1px 5px; 
+        
+        &.selected {
+            background: @brand-primary;
+            color: white;
+        }
+        
+        &.disabled {
+            color: @silver;
+            
+            &:after {
+                float: right;
+                font-size: smaller;
+                padding: 1px;
+                content : "N/A";
+            }
+        }
+    }
+}
+
+#comparison-filter {
+    .alert {
+        display: inline-block;
+        padding: 5px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        .close {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    }
+}
+
+#comparison-setfilter {
+    border-left: 1px solid @clouds;
 }

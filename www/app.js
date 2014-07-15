@@ -1,26 +1,16 @@
 'use strict';
 
 angular.module('main', [
+    'ngSanitize',
     'ui.router',
     'ui.bootstrap',
     'jmdobry.angular-cache',
     'ngProgressLite',
     'navbar-toggle',
-    
-    'queries',
-    'disclosures',
+    'api',
     'constants'])
 
-.factory('API', ['QueriesAPI', 'DisclosuresAPI', 'API_URL', 'DEBUG', 'HTML5', function(QueriesAPI, DisclosuresAPI, API_URL, DEBUG, HTML5) {
-    return {
-        DEBUG: DEBUG,
-        HTML5: HTML5,
-        Queries: new QueriesAPI(API_URL + '/_queries/public/api'),
-        Disclosures: new DisclosuresAPI(API_URL + '/_queries/public')
-    };
-}])
-
-.run(['$rootScope', 'ngProgressLite', function($rootScope, ngProgressLite) {
+.run(['$rootScope', 'ngProgressLite', 'API', function($rootScope, ngProgressLite, API) {
   
     $rootScope.$on('$stateChangeStart', function() {
         ngProgressLite.start();
@@ -34,8 +24,16 @@ angular.module('main', [
         console.error(error);
         ngProgressLite.done();
     });
+    
+    $rootScope.selection = {};
+    $rootScope.$on('SelectionChange', function(event, selection) {
+        $rootScope.selection = angular.copy(selection);
+    });
 
-    $rootScope.selection = { fiscalYear: [ 2013 ], fiscalPeriod: [ 'FY' ], tag: [ 'DOW30' ] };
+    API.init()
+        .then(function(data) { 
+            $rootScope.initialized = data.initialized;
+        });
 }])
 .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$httpProvider', 
     function ($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider) {
