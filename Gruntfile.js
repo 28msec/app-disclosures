@@ -148,6 +148,13 @@ module.exports = function (grunt) {
                         angularjs: true
                     },
                     {
+                        swagger: 'swagger/session.json',
+                        moduleName: 'session',
+                        className: 'SessionAPI',
+                        fileName: 'session.js',
+                        angularjs: true
+                    },
+                    {
                         swagger: 'swagger/disclosures.json',
                         moduleName: 'disclosures',
                         className: 'DisclosuresAPI',
@@ -300,7 +307,7 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
-            //'swagger-js-codegen',
+            'swagger-js-codegen',
             'less',
             'connect:livereload',
             'open',
@@ -309,7 +316,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('test', ['clean:pre', 'less', 'karma:1.2.9', 'clean:post', 'e2e']);
-    grunt.registerTask('build', ['clean:pre', 'less', /*'swagger-js-codegen', */ 'useminPrepare', 'concat', 'copy', 'cssmin', 'htmlmin', 'uglify', 'usemin']);
+    grunt.registerTask('build', ['clean:pre', 'less', 'swagger-js-codegen', 'useminPrepare', 'concat', 'copy', 'cssmin', 'htmlmin', 'uglify', 'usemin']);
     grunt.registerTask('deploy:test', [ 'build:test', 's3:test' ]);
     grunt.registerTask('default', ['jsonlint', 'jshint', 'build', 'test']);
 };

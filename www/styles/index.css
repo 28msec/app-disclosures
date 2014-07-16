@@ -5965,17 +5965,19 @@ html body div[ui-view] {
   margin-top: -50px;
   padding-top: 50px;
   top: 50px;
+  position: relative;
+}
+.wrapper.wrapper-scrolling {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  position: relative;
 }
-.wrapper-left {
+.wrapper.wrapper-left {
   padding-top: 100px;
   display: inline-block;
   width: 30%;
 }
-.wrapper-right {
+.wrapper.wrapper-right {
   padding-top: 0px;
   display: inline-block;
   width: 68%;

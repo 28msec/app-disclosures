@@ -17,7 +17,7 @@ angular.module('main')
                 controller: 'DisclosureConceptsCtrl',
                 resolve: {
                     concepts: ['$rootScope', '$stateParams', 'API', function($rootScope, $stateParams, API) {
-                        return API.Disclosures.concepts({ list: ($stateParams.list === 'All' ? null : $stateParams.list) });
+                        return API.Disclosures.concepts({ list: ($stateParams.list === 'All' ? null : $stateParams.list), token: $rootScope.token });
                     }]
                 }
             },
@@ -37,7 +37,7 @@ angular.module('main')
                     concept: ['$rootScope', '$stateParams', '$q', 'API', function($rootScope, $stateParams, $q, API) {
                         var deferred = $q.defer();
 
-                        API.Disclosures.concept({ concept: $stateParams.concept })
+                        API.Disclosures.concept({ concept: $stateParams.concept, token: $rootScope.token })
                             .then(function(concept) {
                                 if (concept && concept.To) {
                                     var params = angular.copy($rootScope.selection);
@@ -47,6 +47,7 @@ angular.module('main')
                                             params.name.push(k);
                                         }
                                     }
+                                    params.token = $rootScope.token;
                                     API.Queries.listReportElements(params)
                                         .then(function(data) {
                                             concept.ReportElements = data.ReportElements;
@@ -82,7 +83,7 @@ angular.module('main')
                     concept: ['$rootScope', '$stateParams', '$q', 'API', function($rootScope, $stateParams, $q, API) {
                         var deferred = $q.defer();
 
-                        API.Disclosures.concept({ concept: $stateParams.concept })
+                        API.Disclosures.concept({ concept: $stateParams.concept, token: $rootScope.token })
                             .then(function(concept) {
                                 if (concept && concept.To) {
                                     var params = angular.copy($rootScope.selection);
@@ -92,6 +93,7 @@ angular.module('main')
                                             params.name.push(k);
                                         }
                                     }
+                                    params.token = $rootScope.token;
                                     API.Queries.listReportElements(params)
                                         .then(function(data) {
                                             concept.ReportElements = data.ReportElements;
@@ -115,11 +117,12 @@ angular.module('main')
                 templateUrl: 'disclosure/details.html',
                 controller: 'DisclosureDetailsCtrl',
                 resolve: {
-                    fact: ['$stateParams', 'API', function($stateParams, API) {
+                    fact: ['$rootScope', '$stateParams', 'API', function($rootScope, $stateParams, API) {
                         var params = {
                             map: 'Disclosures',
                             concept: $stateParams.concept,
-                            aid: $stateParams.aid
+                            aid: $stateParams.aid,
+                            token: $rootScope.token
                         };
                         return API.Queries.listFacts(params);
                     }]

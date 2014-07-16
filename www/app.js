@@ -7,10 +7,11 @@ angular.module('main', [
     'jmdobry.angular-cache',
     'ngProgressLite',
     'navbar-toggle',
+    'autocomplete',
     'api',
     'constants'])
 
-.run(['$rootScope', 'ngProgressLite', 'API', function($rootScope, ngProgressLite, API) {
+.run(['$rootScope', '$location', 'ngProgressLite', '$angularCacheFactory', 'API', function($rootScope, $location, ngProgressLite, $angularCacheFactory, API) {
   
     $rootScope.$on('$stateChangeStart', function() {
         ngProgressLite.start();
@@ -30,6 +31,47 @@ angular.module('main', [
         $rootScope.selection = angular.copy(selection);
     });
 
+    $angularCacheFactory('app-disclosures', {
+        maxAge: 60 * 60 * 1000,
+        recycleFreq: 60 * 1000,
+        deleteOnExpire: 'aggressive',
+        storageMode: 'localStorage'
+    });
+
+    var cache = $angularCacheFactory.get('app-disclosures');
+    if (cache)
+    {
+        $rootScope.token = cache.get('token');
+        $rootScope.user = cache.get('user');
+    }
+
+    $rootScope.login = function(token, id, email, firstname, lastname) {
+        var user = { id: id, email: email, firstname: firstname, lastname: lastname };
+        $rootScope.token = token;
+        $rootScope.user = user;
+        var cache = $angularCacheFactory.get('app-disclosures');
+        if (cache)
+        {
+            cache.put('token', token);
+            cache.put('user', user);
+        }
+        $location.url('/').replace();
+    };
+
+    $rootScope.logout = function() {
+        $rootScope.token = null;
+        $rootScope.user = null;
+        var cache = $angularCacheFactory.get('app-disclosures');
+        if (cache) {
+            cache.remove('token');
+            cache.remove('user');
+        }
+        $rootScope.selection = { cik : [], tag : [ 'DOW30' ], fiscalYear : [ '2013' ], fiscalPeriod : [ 'FY' ], sic : [] };
+        $location.url('/').replace();
+    };
+
+
+    $rootScope.mainAppURL = "http://app.secxbrl.info";
     API.init()
         .then(function(data) { 
             $rootScope.initialized = data.initialized;
