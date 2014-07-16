@@ -201,24 +201,28 @@ html {
     margin-top: -50px;
     padding-top: 50px;
     top: 50px;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
     position: relative;
+
+    &.wrapper-scrolling {
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    &.wrapper-left {
+        padding-top: 100px;
+        display: inline-block;
+        width: 30%;
+    }
+
+    &.wrapper-right {
+        padding-top: 0px;
+        display: inline-block;
+        width: 68%;
+        float: right;
+    }
 }
 
-.wrapper-left {
-    padding-top: 100px;
-    display: inline-block;
-    width: 30%;
-}
-
-.wrapper-right {
-    padding-top: 0px;
-    display: inline-block;
-    width: 68%;
-    float: right;
-}
 
 //Selector
 ul.selector {

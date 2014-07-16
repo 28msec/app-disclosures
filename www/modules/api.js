@@ -1,11 +1,12 @@
 'use strict';
 
-angular.module('api', ['queries', 'disclosures'])
-.factory('API', ['$q', '$http', 'QueriesAPI', 'DisclosuresAPI', 'API_URL', 'DEBUG', 'HTML5', function($q, $http, QueriesAPI, DisclosuresAPI, API_URL, DEBUG, HTML5) {
+angular.module('api', ['queries', 'session', 'disclosures'])
+.factory('API', ['$q', '$http', 'QueriesAPI', 'SessionAPI', 'DisclosuresAPI', 'API_URL', 'DEBUG', 'HTML5', function($q, $http, QueriesAPI, SessionAPI, DisclosuresAPI, API_URL, DEBUG, HTML5) {
     return {
         DEBUG: DEBUG,
         HTML5: HTML5,
         Queries: new QueriesAPI(API_URL + '/_queries/public/api'),
+        Session: new SessionAPI(API_URL + '/_queries/public'),
         Disclosures: new DisclosuresAPI(API_URL + '/_queries/public'),
 
         data: {},

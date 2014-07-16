@@ -2,50 +2,68 @@
     <h3 class="modal-title">Filter Settings</h3>
 </div>
 <div class="modal-body row">
+    <div class="col-xs-12" ng-hide="token">
+        <div class="alert alert-info">
+            <h4>Unregistered users receive free access to DOW30 companies only</h4>
+            <p>
+                Registered users can filter companies by CIK, SIC and tags like SP 500 and FORTUNE 100.
+            </p>
+            <p>
+                To login using your secxbrl.info credentials, <a  ui-sref="account.login" ng-click="cancel()">click here</a>.
+            </p>
+            <p>
+                If you forgot your password or you want to create an account, visit <a ng-href="{{mainAppURL}}" target="_blank">secxbrl.info</a>.
+            </p>
+        </div>
+    </div>
     <div id="comparison-filter" class="col-xs-6">
-        <div ng-show="selection.cik.length + selection.tag.length">
-            <div>
-                <h6>ENTITIES OR ENTITY GROUPS</h6>
-                <div class="alert alert-success" ng-repeat="t in selection.tag">
-                    <a class="close" ng-click="selection.tag.splice($index, 1)">&times;</a>
-                    {{t}}
+        <div ng-show="token">
+            <div ng-show="selection.cik.length + selection.tag.length">
+                <div>
+                    <h6>ENTITIES OR ENTITY GROUPS</h6>
+                    <div class="alert alert-success" ng-repeat="t in selection.tag">
+                        <a class="close" ng-click="selection.tag.splice($index, 1)">&times;</a>
+                        {{t}}
+                    </div>
+                    <div class="alert alert-info" ng-repeat="c in selection.cik">
+                        <a class="close" ng-click="selection.cik.splice($index, 1)">&times;</a>
+                        {{getEntity(c).name}}
+                    </div>
                 </div>
-                <div class="alert alert-info" ng-repeat="c in selection.cik">
-                    <a class="close" ng-click="selection.cik.splice($index, 1)">&times;</a>
-                    {{getEntity(c).name}}
+            </div>
+            <div ng-show="selection.sic.length">
+                <div>
+                    <h6>INDUSTRY GROUP</h6>
+                    <div class="alert alert-danger" ng-repeat="s in selection.sic">
+                        <a class="close" ng-click="selection.sic.splice($index, 1)">&times;</a>
+                        {{getSic(s).Description}}
+                    </div>
                 </div>
             </div>
         </div>
-        <div ng-show="selection.sic.length">
-            <div>
-                <h6>INDUSTRY GROUP</h6>
-                <div class="alert alert-danger" ng-repeat="s in selection.sic">
-                    <a class="close" ng-click="selection.sic.splice($index, 1)">&times;</a>
-                    {{getSic(s).Description}}
+        <div>
+            <div ng-show="selection.fiscalYear.length">
+                <div>
+                    <h6>FISCAL YEARS</h6>
+                    <div class="alert alert-warning" ng-repeat="y in selection.fiscalYear">
+                        <a class="close" ng-click="selection.fiscalYear.splice($index, 1)">&times;</a>
+                        {{y}}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div ng-show="selection.fiscalYear.length">
-            <div>
-                <h6>FISCAL YEARS</h6>
-                <div class="alert alert-warning" ng-repeat="y in selection.fiscalYear">
-                    <a class="close" ng-click="selection.fiscalYear.splice($index, 1)">&times;</a>
-                    {{y}}
-                </div>
+            <div ng-show="selection.fiscalPeriod.length">
+                <div>
+                    <h6>FISCAL PERIODS</h6>
+                    <div class="alert alert-warning" ng-repeat="p in selection.fiscalPeriod">
+                        <a class="close" ng-click="selection.fiscalPeriod.splice($index, 1)">&times;</a>
+                        {{p}}
+                    </div>
+                </div>  
             </div>
-        </div>
-        <div ng-show="selection.fiscalPeriod.length">
-            <div>
-                <h6>FISCAL PERIODS</h6>
-                <div class="alert alert-warning" ng-repeat="p in selection.fiscalPeriod">
-                    <a class="close" ng-click="selection.fiscalPeriod.splice($index, 1)">&times;</a>
-                    {{p}}
-                </div>
-            </div>  
         </div>
     </div>
     <div id="comparison-setfilter" class="col-xs-6">
-        <div>
+        <div ng-show="token">
             <h6>ADD ENTITY</h6>
             <input class="form-control" type="text" ng-model="name" typeahead-on-select="selectEntity($item)"
                    placeholder="Search for an entity..."
@@ -90,7 +108,7 @@
     </div>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-danger pull-left" ng-click="resetSelection()">RESET</a>
+    <button class="btn btn-danger pull-left" ng-click="reset()">RESET</a>
     <button class="btn btn-primary" ng-click="ok()">OK</button>
     <button class="btn btn-default" ng-click="cancel()">CANCEL</button>
 </div>
