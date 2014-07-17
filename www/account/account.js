@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('main')
-.controller('AccountCtrl', ['$scope', '$stateParams', function($scope, $stateParams){
+.controller('AccountCtrl', [function(){
 }])
 .controller('AccountLoginCtrl', ['$scope', '$rootScope', '$stateParams', 'API', function($scope, $rootScope, $stateParams, API){
     $scope.loading = false;
@@ -26,3 +26,4 @@ angular.module('main')
         }
     };
 }])
+;

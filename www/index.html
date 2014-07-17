@@ -12,13 +12,8 @@
         <!-- endbuild -->
     </head>
 
-    <body class="ng-cloak height100percent">
-        <script type="text/javascript">
-            window.error = function(message, url, line) {
-                console.log("Error: " + message + " in " + url + " at line " + line);
-            }
-        </script>
-        <div ui-view class="height100percent"></div>
+    <body class="ng-cloak">
+        <div ui-view class="vbox viewport"></div>
 
         <!-- build:js({.tmp,www}) scripts/scripts.js -->
         <script src="bower_components/angular/angular.js"></script>
@@ -41,9 +36,15 @@
         <script src="app.js"></script>
         
 
-        <!-- disclosure -->
-        <script src="disclosure/config.js"></script>
-        <script src="disclosure/disclosure.js"></script>
+        <!-- disclosures -->
+        <script src="disclosures/config.js"></script>
+        <script src="disclosures/controller.js"></script>
+        <script src="disclosures/list/config.js"></script>
+        <script src="disclosures/list/controller.js"></script>
+        <script src="disclosures/concept/config.js"></script>
+        <script src="disclosures/concept/controller.js"></script>
+        <script src="disclosures/concept/aid/config.js"></script>
+        <script src="disclosures/concept/aid/controller.js"></script>
 
         <!-- about -->
         <script src="about/config.js"></script>

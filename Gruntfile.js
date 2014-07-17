@@ -26,7 +26,7 @@ module.exports = function (grunt) {
         config: config,
         watch: {
             less: {
-                files:  ['<%= config.www %>/styles/{,*/}*.less'],
+                files:  ['<%= config.www %>/{,*/}*.less'],
                 tasks: ['less']
             },
             livereload: {

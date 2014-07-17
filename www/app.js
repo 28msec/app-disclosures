@@ -71,7 +71,7 @@ angular.module('main', [
     };
 
 
-    $rootScope.mainAppURL = "http://app.secxbrl.info";
+    $rootScope.mainAppURL = 'http://app.secxbrl.info';
     API.init()
         .then(function(data) { 
             $rootScope.initialized = data.initialized;

@@ -1,0 +1,57 @@
+
+.filterbar {
+    margin: 5px 5px 0px 0px;
+    padding: 1px 10px !important; 
+    text-align: left;
+    background: lighten(@brand-primary, 10%);
+    color: @body-bg !important;
+    border-radius: 5px;
+
+    &:hover {
+        background: lighten(@brand-primary, 5%) !important;
+    }
+
+    > div {
+        max-width: 400px;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+.sidebar {
+    min-width: 250px;
+
+    .chevron-left {
+        float: left;
+        margin: 4px 2px;
+    }
+
+    .chevron-right {
+        float: right;
+        margin: 4px 2px;
+    }
+
+    .searchbar {
+        padding: 10px;
+        background-color: @clouds;
+    }
+}
+
+#filter-current {
+    .alert {
+        display: inline-block;
+        padding: 5px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        .close {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    }
+}
+
+#filter-setter {
+    border-left: 1px solid @clouds;
+}

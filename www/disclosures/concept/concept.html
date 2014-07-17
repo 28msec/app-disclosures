@@ -1,0 +1,29 @@
+<div class="boxcell vbox sidebar">
+    <p>
+        <ul class="nav nav-pills nav-justified">
+            <li>
+                <a ui-sref="disclosures.list({ list: list })" class="text-left"><i class="fa fa-chevron-left chevron-left"></i> {{concept.Label}}</a>
+            </li>
+        </ul>
+    </p>
+    <div class="searchbar">
+        <input type="text" class="form-control" ng-model="search" placeholder="Search">
+    </div>
+    <ul class="boxcell scrollable nav nav-stacked nav-xs" ng-hide="concept.ReportElements.length == 0">
+        <li ng-repeat="r in concept.ReportElements | filter:search | orderBy:['EntityRegistrantName','-FiscalYear']">
+            <a ui-sref="disclosures.concept.aid({ list: list, concept: concept.Name, aid: r.AccessionNumber })" ng-class="{ active: (r.AccessionNumber === aid) }" ng-click="select(r.AccessionNumber)">
+                <i class="fa fa-chevron-right chevron-right"></i>
+                <small class="pull-right" style="padding: 2px;">({{r.FiscalYear}}/{{r.FiscalPeriod}})</small>
+                {{r.EntityRegistrantName}} 
+            </a>
+        </li>
+    </ul>
+    <span>
+        <div class="alert alert-info" ng-show="concept.ReportElements.length == 0">
+            Concept not filed for the companies from the current <a ng-click="filter()">Filter</a>.
+        </div>
+    </span>
+</div>
+<div class="boxcell-big space-between">
+    <div ui-view class="vbox"></div>
+</div>

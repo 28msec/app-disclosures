@@ -16,7 +16,7 @@
             </p>
         </div>
     </div>
-    <div id="comparison-filter" class="col-xs-6">
+    <div id="filter-current" class="col-xs-6">
         <div ng-show="token">
             <div ng-show="selection.cik.length + selection.tag.length">
                 <div>
@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-    <div id="comparison-setfilter" class="col-xs-6">
+    <div id="filter-setter" class="col-xs-6">
         <div ng-show="token">
             <h6>ADD ENTITY</h6>
             <input class="form-control" type="text" ng-model="name" typeahead-on-select="selectEntity($item)"

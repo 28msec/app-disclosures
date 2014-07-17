@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('main')
-.controller('DisclosureCtrl', ['$scope', '$modal', '$location', '$stateParams', 'API', function($scope, $modal, $location, $stateParams, API){
+.controller('DisclosuresCtrl', ['$scope', '$modal', '$location', '$stateParams', 'API', function($scope, $modal, $location, $stateParams, API){
     
     $scope.selection = {
         cik : ($stateParams.cik ? $stateParams.cik.split(',') : []),
@@ -22,8 +22,8 @@ angular.module('main')
     $scope.filter = function() {
 
         var modalInstance = $modal.open({
-            templateUrl: 'disclosure/filter.html',
-            controller: 'DisclosureFilterCtrl',
+            templateUrl: 'disclosures/filter.html',
+            controller: 'DisclosuresFilterCtrl',
             resolve: {
                 tags: function() {
                     return API.getTags();
@@ -61,7 +61,7 @@ angular.module('main')
         }
     );
 }])
-.controller('DisclosureFilterCtrl', ['$scope', '$rootScope', '$modalInstance', 'tags', 'entities', 'years', 'periods', 'sics', 'selection', function($scope, $rootScope, $modalInstance, tags, entities, years, periods, sics, selection) {
+.controller('DisclosuresFilterCtrl', ['$scope', '$rootScope', '$modalInstance', 'tags', 'entities', 'years', 'periods', 'sics', 'selection', function($scope, $rootScope, $modalInstance, tags, entities, years, periods, sics, selection) {
     $scope.tags = tags;
     $scope.entities = entities;
     $scope.years = years;
@@ -130,31 +130,5 @@ angular.module('main')
         });
         return ret;
     };
-}])
-.controller('DisclosureConceptsCtrl', ['$scope', '$stateParams', 'concepts', function($scope, $stateParams, concepts){
-    $scope.list = $stateParams.list;
-    $scope.concepts = concepts;
-}])
-.controller('DisclosureConceptCtrl', ['$scope', '$stateParams', 'concept', function($scope, $stateParams, concept){
-    $scope.list = $stateParams.list;
-    $scope.aid = $stateParams.aid;
-    $scope.concept = concept;
-}])
-.controller('DisclosureNotSelectedCtrl', ['$scope', '$stateParams', function($scope, $stateParams){
-    $scope.list = $stateParams.list;
-    $scope.concept = $stateParams.concept;
-    $scope.aid = $stateParams.aid;
-}])
-.controller('DisclosureDetailsCtrl', ['$scope', '$stateParams', '$sce', 'fact', function($scope, $stateParams, $sce, fact){
-    $scope.list = $stateParams.list;
-    $scope.concept = $stateParams.concept;
-    $scope.aid = $stateParams.aid;
-    if (fact && fact.FactTable && fact.FactTable.length > 0)
-    {
-        $scope.factValue = $sce.trustAsHtml(fact.FactTable[0].Value);
-        $scope.factEntity = fact.FactTable[0].EntityRegistrantName;
-        $scope.factFiscalYear = fact.FactTable[0].Aspects['sec:FiscalYear'];
-        $scope.factFiscalPeriod = fact.FactTable[0].Aspects['sec:FiscalPeriod'];
-    }
 }])
 ;
