@@ -5776,7 +5776,7 @@ button.close {
   pointer-events: none;
 }
 .ngProgressLiteBar {
-  background: #333333;
+  background: #ffffff;
   position: fixed;
   z-index: 2000;
   top: 0;
@@ -5794,6 +5794,62 @@ button.close {
   -webkit-transform: rotate(3deg) translate(0px, -4px);
   -ms-transform: rotate(3deg) translate(0px, -4px);
   transform: rotate(3deg) translate(0px, -4px);
+}
+.filterbar {
+  margin: 5px 5px 0px 0px;
+  padding: 1px 10px !important;
+  text-align: left;
+  background: #6aa3d5;
+  color: #ffffff !important;
+  border-radius: 5px;
+}
+.filterbar:hover {
+  background: #5697d0 !important;
+}
+.filterbar > div {
+  max-width: 400px;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.sidebar {
+  min-width: 250px;
+}
+.sidebar .chevron-left {
+  float: left;
+  margin: 4px 2px;
+}
+.sidebar .chevron-right {
+  float: right;
+  margin: 4px 2px;
+}
+.sidebar .searchbar {
+  padding: 10px;
+  background-color: #ecf0f1;
+}
+#filter-current .alert {
+  display: inline-block;
+  padding: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+#filter-current .alert .close {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#filter-setter {
+  border-left: 1px solid #ecf0f1;
+}
+.ratingbar {
+  border: 1px solid #ecf0f1;
+  padding: 5px;
+}
+.ratingbar .fa {
+  font-family: 'FontAwesome' !important;
+}
+.ratingbar.expanded {
+  height: 200px;
 }
 a {
   cursor: pointer;
@@ -5842,153 +5898,114 @@ label {
   background-color: #d9534f;
 }
 .viewport {
-  height: 100%;
   width: 100%;
-  overflow-x: hidden;
+  height: 100%;
+  margin: 0;
 }
 html {
-  height: 100%;
   width: 100%;
-  overflow-x: hidden;
+  height: 100%;
+  margin: 0;
 }
 html body {
-  height: 100%;
   width: 100%;
-  overflow-x: hidden;
+  height: 100%;
+  margin: 0;
 }
 html body div[ui-view] {
+  width: 100%;
   height: 100%;
-  width: 100%;
-  overflow-x: hidden;
+  margin: 0;
 }
-.nav-filter {
-  margin: 5px 5px 0px 0px;
-  padding: 1px 10px !important;
-  text-align: left;
-  background: #34495e;
-  border-radius: 5px;
+/* encapsulate the various syntax in helper clases */
+/* inspired by http://infrequently.org/2009/08/css-3-progress/ */
+/* items flex/expand vertically */
+.vbox {
+  /* previous syntax */
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  /* current syntax */
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
-.nav-filter:hover {
-  background: #2980b9 !important;
+/* items flex/expand horizontally */
+.hbox {
+  /* previous syntax */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: box;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -ms-box-orient: horizontal;
+  box-orient: horizontal;
+  /* current syntax */
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
-.nav-filter > div {
-  max-width: 400px;
-  display: block;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+.boxcell {
+  /* previous syntax */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -ms-box-flex: 1;
+  box-flex: 1;
+  /* current syntax */
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
-.secondmenu {
-  background: #ffffff;
-  width: 100%;
-  z-index: 1000;
-  position: absolute;
-  top: 0px;
+.boxcell-big {
+  /* previous syntax */
+  -webkit-box-flex: 4;
+  -moz-box-flex: 4;
+  -ms-box-flex: 4;
+  box-flex: 4;
+  /* current syntax */
+  -webkit-flex: 4;
+  -moz-flex: 4;
+  -ms-flex: 4;
+  flex: 4;
 }
-.secondmenu a {
-  text-decoration: none;
-  cursor: pointer;
+.space-between {
+  /* previous syntax */
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-box-pack: justify;
+  box-pack: justify;
+  /* current syntax */
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
 }
-.secondmenu .nav-menu {
-  margin: 5px 0px;
-  padding: 0px;
-  width: 100%;
-}
-.secondmenu .nav-menu > tbody > tr > td {
-  width: 25%;
-  padding: 0px;
-  border: 1px solid #ecf0f1;
-}
-.secondmenu .nav-menu > tbody > tr > td > a {
-  padding: 7px 3px;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-  width: 100%;
-  display: block;
-}
-.secondmenu .nav-menu > tbody > tr > td.active > a {
-  background: #428bca;
-  color: #ffffff;
-}
-.secondmenu .nav-menu-sel {
-  margin: 5px 0px;
-  padding: 0px;
-  width: 100%;
-}
-.secondmenu .nav-menu-sel > tbody > tr > td {
-  width: 25%;
-  padding: 0px;
-  border: 1px solid #ecf0f1;
-}
-.secondmenu .nav-menu-sel > tbody > tr > td > a {
-  padding: 7px 10px;
-  margin: 0px;
-  text-align: left;
-  width: 100%;
-  display: block;
-  overflow-x: hidden;
-  white-space: nowrap;
-  text-overflow: hidden;
-}
-.secondmenu .nav-search {
-  padding: 10px;
-  background-color: #ecf0f1;
-}
-.nav-list {
-  padding: 10px;
-}
-.nav-list > a {
-  border-bottom: 1px solid #ecf0f1;
-  padding: 5px 0px;
-  margin: 5px 0px;
-  display: block;
-  text-decoration: none;
-  cursor: pointer;
-}
-.nav-list > a.active {
-  color: #222222;
-  font-weight: bold;
-}
-.chevron-left {
-  float: left;
-  margin: 4px 2px;
-}
-.chevron-right {
-  float: right;
-  margin: 4px 2px;
-}
-.navbar-right {
-  padding-right: 20px;
-}
-.wrapper {
-  margin-top: -50px;
-  padding-top: 50px;
-  top: 50px;
-  position: relative;
-}
-.wrapper.wrapper-scrolling {
-  height: 100%;
+.scrollable {
   overflow-x: hidden;
   overflow-y: auto;
-}
-.wrapper.wrapper-left {
-  padding-top: 100px;
-  display: inline-block;
-  width: 30%;
-}
-.wrapper.wrapper-right {
-  padding-top: 0px;
-  display: inline-block;
-  width: 68%;
-  float: right;
 }
 ul.selector {
   padding: 3px 0px;
   margin: 0;
   list-style: none;
   border: 1px solid #ecf0f1;
-  background: white;
+  background: #ffffff;
   border-radius: 3px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -6002,7 +6019,7 @@ ul.selector li {
 }
 ul.selector li.selected {
   background: #428bca;
-  color: white;
+  color: #ffffff;
 }
 ul.selector li.disabled {
   color: #bdc3c7;
@@ -6013,16 +6030,40 @@ ul.selector li.disabled:after {
   padding: 1px;
   content: "N/A";
 }
-#comparison-filter .alert {
-  display: inline-block;
+.nav-pills li {
+  border: 1px solid #ecf0f1;
+}
+.nav-pills li.active {
+  border: 1px solid #428bca;
+}
+.nav-pills li > a {
+  color: #333333;
+  padding: 7px 3px;
+}
+.nav-pills li > a:hover {
+  background-color: #f5f7f7;
+}
+.nav-pills > li + li {
+  margin-left: 0;
+  border-left: 0;
+}
+.nav-xs {
+  font-size: small;
+}
+.nav-xs li {
+  border-bottom: 1px solid #ecf0f1;
+}
+.nav-xs li > a {
+  color: #333333;
   padding: 5px;
-  margin-right: 5px;
-  margin-bottom: 5px;
+  margin: 0px;
 }
-#comparison-filter .alert .close {
-  margin-left: 5px;
-  margin-right: 5px;
+.nav-xs li > a.active {
+  background: #ecf0f1;
 }
-#comparison-setfilter {
-  border-left: 1px solid #ecf0f1;
+.nav-xs li > a:hover {
+  background-color: #f5f7f7;
+}
+.nav-xs > li + li {
+  margin-top: 0;
 }

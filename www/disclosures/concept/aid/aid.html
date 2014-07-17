@@ -1,0 +1,10 @@
+<div class="boxcell-big space-between scrollable" style="padding: 0px 10px 0px 20px;">
+    <h2>{{factEntity}} <small>({{factFiscalYear}}/{{factFiscalPeriod}})</small></h2>
+    <div class="ratingbar scrollable" ng-class="{ expanded: expanded }">
+        Rating: <rating ng-model="rate" max="5" readonly="!expanded" rating-states="ratingStates"></rating> &nbsp; | &nbsp; {{comments}} user comments. 
+        <a ng-show="token && !expanded" ng-click="expand()">
+            <i class="fa fa-chevron-down"></i>
+        </a>
+    </div>
+    <div ng-bind-html="factValue"></div>
+</div>

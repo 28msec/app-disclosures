@@ -1,6 +1,9 @@
 @import "bootstrap.less";
 @import "ng-progress-lite.less";
 
+@import "../disclosures/style.less";
+@import "../disclosures/concept/aid/style.less";
+
 a {
     cursor: pointer;
 }
@@ -60,177 +63,128 @@ label {
 }
 
 .viewport{
-    height: 100%;
     width: 100%;
-    overflow-x: hidden;
+    height: 100%;
+    margin: 0;
 }
 
 html {
-    .viewport;
+    .viewport();
 
     body {
         .viewport();
     
         div[ui-view] {
-            .viewport;
+            .viewport();
         }   
     }   
 }
 
-.nav-filter {
-    margin: 5px 5px 0px 0px;
-    padding: 1px 10px !important; 
-    text-align: left;
-    background: @wet-asphalt;
-    border-radius: 5px;
+/* encapsulate the various syntax in helper clases */
+/* inspired by http://infrequently.org/2009/08/css-3-progress/ */
 
-    &:hover {
-        background: @belize-hole !important;
-    }
+/* items flex/expand vertically */
+.vbox {
+    /* previous syntax */
+    display: -webkit-box;
+    display:    -moz-box;
+    display:         box;
 
-    > div {
-        max-width: 400px;
-        display: block;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
+    -webkit-box-orient: vertical;
+       -moz-box-orient: vertical;
+        -ms-box-orient: vertical;
+            box-orient: vertical;
+
+    /* current syntax */
+    display: -webkit-flex;
+    display:    -moz-flex;
+    display:     -ms-flex;
+    display:         flex;
+
+    -webkit-flex-direction: column;
+       -moz-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
-.secondmenu {
-    background: @body-bg;
-    width: 100%;
-    z-index: 1000;
-    position: absolute;
-    top: 0px;
+/* items flex/expand horizontally */
+.hbox {
+    /* previous syntax */
+    display: -webkit-box;
+    display:    -moz-box;
+    display:     -ms-box;
+    display:         box;
 
-    a { 
-        text-decoration: none;
-        cursor: pointer;
-    }
+    -webkit-box-orient: horizontal;
+       -moz-box-orient: horizontal;
+        -ms-box-orient: horizontal;
+            box-orient: horizontal;
 
-    .nav-menu {
-        margin: 5px 0px;
-        padding: 0px;
-        width: 100%;
+    /* current syntax */
+    display: -webkit-flex;
+    display:    -moz-flex;
+    display:     -ms-flex;
+    display:         flex;
 
-        > tbody > tr > td {
-            width: 25%;
-            padding: 0px;
-            border: 1px solid @clouds;
-            
-            > a {
-                padding: 7px 3px;
-                cursor: pointer;
-                text-decoration: none;
-                text-align: center;
-                width: 100%;
-                display: block;
-            }
-            
-            &.active > a {
-                background: @brand-primary;
-                color: @body-bg;
-            }
-        }
-    }
-
-    .nav-menu-sel {
-        margin: 5px 0px;
-        padding: 0px;
-        width: 100%;
-
-        > tbody > tr > td {
-            width: 25%;
-            padding: 0px;
-            border: 1px solid @clouds;
-
-            > a {
-                padding: 7px 10px;
-                margin: 0px;
-                text-align: left;
-                width: 100%;
-                display: block;
-                overflow-x: hidden;
-                white-space: nowrap;
-                text-overflow: hidden;
-            }
-        }
-    }
-
-    .nav-search {
-        padding: 10px;
-        background-color: @clouds;
-    }
+    -webkit-flex-direction: row;
+       -moz-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
 }
 
-.nav-list {
-    padding: 10px;
+.boxcell {
+    /* previous syntax */
+    -webkit-box-flex: 1;
+       -moz-box-flex: 1;
+        -ms-box-flex: 1;
+            box-flex: 1;
 
-    > a {
-        border-bottom: 1px solid @clouds;
-        padding: 5px 0px;
-        margin:  5px 0px;
-        display: block;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    > a.active {
-        color: @gray-darker;
-        font-weight: bold;
-    }
+    /* current syntax */
+    -webkit-flex: 1;
+       -moz-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
 }
 
-.chevron-left {
-    float: left;
-    margin: 4px 2px;
+.boxcell-big {
+    /* previous syntax */
+    -webkit-box-flex: 4;
+       -moz-box-flex: 4;
+        -ms-box-flex: 4;
+            box-flex: 4;
+
+    /* current syntax */
+    -webkit-flex: 4;
+       -moz-flex: 4;
+        -ms-flex: 4;
+            flex: 4;
 }
 
-.chevron-right {
-    float: right;
-    margin: 4px 2px;
+.space-between {
+    /* previous syntax */
+    -webkit-box-pack: justify;
+       -moz-box-pack: justify;
+        -ms-box-pack: justify;
+            box-pack: justify;
+
+    /* current syntax */
+    -webkit-justify-content: space-between;
+       -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+            justify-content: space-between;
 }
 
-//fix for bootstrap 3
-.navbar-right {
-    padding-right: 20px;
+.scrollable {
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-.wrapper {
-    margin-top: -50px;
-    padding-top: 50px;
-    top: 50px;
-    position: relative;
-
-    &.wrapper-scrolling {
-        height: 100%;
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
-
-    &.wrapper-left {
-        padding-top: 100px;
-        display: inline-block;
-        width: 30%;
-    }
-
-    &.wrapper-right {
-        padding-top: 0px;
-        display: inline-block;
-        width: 68%;
-        float: right;
-    }
-}
-
-
-//Selector
 ul.selector {
     padding: 3px 0px; 
     margin: 0; 
     list-style: none;
     border: 1px solid @clouds;
-    background: white;
+    background: @body-bg;
     border-radius: 3px;
     .box-sizing(border-box);
     overflow-x: hidden;
@@ -242,7 +196,7 @@ ul.selector {
         
         &.selected {
             background: @brand-primary;
-            color: white;
+            color: @body-bg;
         }
         
         &.disabled {
@@ -258,19 +212,53 @@ ul.selector {
     }
 }
 
-#comparison-filter {
-    .alert {
-        display: inline-block;
-        padding: 5px;
-        margin-right: 5px;
-        margin-bottom: 5px;
-        .close {
-            margin-left: 5px;
-            margin-right: 5px;
+.nav-pills {
+
+    li {
+        border: 1px solid @clouds;
+        
+        &.active {
+            border: 1px solid @brand-primary;
         }
+        
+        >a {
+            color: @text-color;
+            padding: 7px 3px;
+
+            &:hover {
+                background-color: lighten(@clouds, 3%);
+            }
+        }
+    }
+
+    >li + li {
+        margin-left: 0;
+        border-left: 0;
     }
 }
 
-#comparison-setfilter {
-    border-left: 1px solid @clouds;
+.nav-xs {
+    font-size: small;
+
+    li {
+        border-bottom: 1px solid @clouds;
+
+        >a {
+            color: @text-color;
+            padding: 5px;
+            margin: 0px;
+
+            &.active {
+                background: @clouds;
+            }
+
+            &:hover {
+                background-color: lighten(@clouds, 3%);
+            }
+        }
+    }
+
+    >li + li {
+        margin-top: 0;
+    }
 }
