@@ -5851,6 +5851,9 @@ button.close {
 .ratingbar.expanded {
   height: 200px;
 }
+#factContent {
+  padding: 0px 10px 0px 20px;
+}
 a {
   cursor: pointer;
 }
