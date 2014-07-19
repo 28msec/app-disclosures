@@ -107,8 +107,14 @@
         </div>
     </div>
 </div>
+<div id="filter-error" class="text-center" ng-show="invalid">
+    <div class="alert alert-danger">
+        <h4>INVALID FILTER !</h4>
+        Please choose a fiscal year, fiscal period <span ng-hide="token">and a tag, CIK or SIC</span>
+    </div>
+</div>
 <div class="modal-footer">
-    <button class="btn btn-danger pull-left" ng-click="reset()">RESET</a>
+    <button class="btn btn-danger pull-left" ng-click="reset()">RESET</button>
     <button class="btn btn-primary" ng-click="ok()">OK</button>
     <button class="btn btn-default" ng-click="cancel()">CANCEL</button>
 </div>

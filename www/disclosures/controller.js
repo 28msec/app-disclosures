@@ -11,9 +11,10 @@ angular.module('main')
         sic : ($stateParams.sic ? $stateParams.sic.split(',') : [])
     };
 
-    if ($scope.selection.cik.length === 0 &&
-        $scope.selection.tag.length === 0 &&
-        $scope.selection.fiscalYear.length === 0 &&
+    if (($scope.selection.cik.length === 0 &&
+        $scope.selection.sic.length === 0 &&
+        $scope.selection.tag.length === 0) ||
+        $scope.selection.fiscalYear.length === 0 ||
         $scope.selection.fiscalPeriod.length === 0)
     {
         $scope.selection = { cik : [], tag : [ 'DOW30' ], fiscalYear : [ '2013' ], fiscalPeriod : [ 'FY' ], sic : [] };
@@ -74,7 +75,19 @@ angular.module('main')
     };
 
     $scope.ok = function () {
-        $modalInstance.close($scope.selection);
+        $scope.invalid = false;
+        if (($scope.selection.cik.length === 0 &&
+            $scope.selection.sic.length === 0 &&
+            $scope.selection.tag.length === 0) ||
+            $scope.selection.fiscalYear.length === 0 ||
+            $scope.selection.fiscalPeriod.length === 0)
+        {
+            $scope.invalid = true;
+        }
+        else
+        {
+            $modalInstance.close($scope.selection);
+        }
     };
 
     $scope.cancel = function () {
