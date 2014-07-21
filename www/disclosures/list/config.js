@@ -18,5 +18,5 @@ angular.module('main')
         url: '/not-selected',
         templateUrl: 'disclosures/list/not-selected.html',
         controller: 'DisclosuresNotSelectedCtrl'
-    })
+    });
 }]);

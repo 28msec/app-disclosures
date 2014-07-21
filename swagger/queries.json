@@ -1276,6 +1276,17 @@
                             "paramType": "query"
                         },
                         {
+                            "name": "map",
+                            "description": "The concept map that should be used to resolve the concept (default: none)",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "FundamentalAccountingConcepts",
+                                "null"
+                              ],
+                            "paramType": "query"
+                        },
+                        {
                             "name": "onlyNames",
                             "description": "Whether only the names of the report elements should be returned. If so, the values don't contain duplicates. (default: false)",
                             "required": false,
