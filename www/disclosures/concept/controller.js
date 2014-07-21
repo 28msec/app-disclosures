@@ -5,6 +5,7 @@ angular.module('main')
     $scope.list = $stateParams.list;
     $scope.aid = $stateParams.aid;
     $scope.concept = concept;
+    $scope.concept.Label = (concept.ReportElements && concept.ReportElements.length > 0 ? concept.ReportElements[0].Label : 'Back');
 
     $scope.select = function(aid) {
         $scope.aid = aid;

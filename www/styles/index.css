@@ -5818,7 +5818,7 @@ button.close {
 }
 .sidebar .chevron-left {
   float: left;
-  margin: 4px 2px;
+  margin: 4px 5px;
 }
 .sidebar .chevron-right {
   float: right;
@@ -5828,13 +5828,15 @@ button.close {
   padding: 10px;
   background-color: #ecf0f1;
 }
-#filter-current .alert {
+#filter-current .alert,
+#filter-error .alert {
   display: inline-block;
   padding: 5px;
   margin-right: 5px;
   margin-bottom: 5px;
 }
-#filter-current .alert .close {
+#filter-current .alert .close,
+#filter-error .alert .close {
   margin-left: 5px;
   margin-right: 5px;
 }

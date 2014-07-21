@@ -891,6 +891,7 @@ angular.module('queries', [])
                  * @param {{string}} fiscalYear - The fiscal year of the fact to retrieve (default: ALL)
                  * @param {{string}} fiscalPeriod - The fiscal period of the fact to retrieve (default: FY)
                  * @param {{string}} aid - The id of the filing
+                 * @param {{string}} map - The concept map that should be used to resolve the concept (default: none)
                  * @param {{string}} onlyNames - Whether only the names of the report elements should be returned. If so, the values don't contain duplicates. (default: false)
                  * @param {{string}} name - The name of the report element to return (e.g. us-gaap:Assets).
                  * @param {{string}} label - A search term to search in the labels of report elements (e.g. stock)
@@ -937,6 +938,10 @@ angular.module('queries', [])
 
                     if (parameters['aid'] !== undefined) {
                         queryParameters['aid'] = parameters['aid'];
+                    }
+
+                    if (parameters['map'] !== undefined) {
+                        queryParameters['map'] = parameters['map'];
                     }
 
                     if (parameters['onlyNames'] !== undefined) {
