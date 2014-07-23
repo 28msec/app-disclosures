@@ -1,30 +1,39 @@
 'use strict';
 
-angular.module('api', ['queries', 'session', 'disclosures'])
-.factory('API', ['$q', '$http', 'QueriesAPI', 'SessionAPI', 'DisclosuresAPI', 'API_URL', 'DEBUG', 'HTML5', function($q, $http, QueriesAPI, SessionAPI, DisclosuresAPI, API_URL, DEBUG, HTML5) {
+angular.module('api', ['queries', 'session'])
+.factory('API', ['$q', '$http', 'QueriesAPI', 'SessionAPI', 'API_URL', 'DEBUG', 'HTML5', function($q, $http, QueriesAPI, SessionAPI, API_URL, DEBUG, HTML5) {
     return {
+        API_URL: API_URL,
         DEBUG: DEBUG,
         HTML5: HTML5,
         Queries: new QueriesAPI(API_URL + '/_queries/public/api'),
         Session: new SessionAPI(API_URL + '/_queries/public'),
-        Disclosures: new DisclosuresAPI(API_URL + '/_queries/public'),
-
-        data: {},
+        
+        data: { },
+        deferred: $q.defer(),
 
         init : function() {
             var that = this;
-            var deferred = $q.defer();
             
-            this.data.tag = ['ALL', 'DOW30', 'SP500', 'FORTUNE100', 'PJI'];
+            that.data.tag = ['ALL', 'DOW30', 'SP500', 'FORTUNE100', 'PJI'];
 
-            this.data.year = [];
+            that.data.year = [];
             var year = (new Date()).getFullYear();
-            while (year >= 2009) { this.data.year.push('' + year); year -= 1; }
+            while (year >= 2009) { that.data.year.push('' + year); year -= 1; }
             
-            this.data.period = [ 'FY', 'Q3', 'Q2', 'Q1' ];
+            that.data.period = [ 'FY', 'Q3', 'Q2', 'Q1' ];
             
-            this.Queries.listEntities({})
+            that.Queries.listEntities({})
                 .then(function(data) {
+                    that.Queries.listReportSchemas({ name: 'Disclosures' })
+                        .then(function(data) {
+                            that.data.reportSchema = data;
+                            that.deferred.resolve({ initialized: true });
+                        },
+                        function(response) {
+                            that.deferred.reject(response);
+                        });
+
                     if (data && data.Entities) {
                         that.data.entities = [];
                         that.data.sics = [];
@@ -39,23 +48,24 @@ angular.module('api', ['queries', 'session', 'disclosures'])
                             index++;
                         });
                     }
-                    deferred.resolve({ initialized: true });
                 },
                 function(response) {
-                    deferred.reject(response);
+                    that.deferred.reject(response);
                 });
 
-            return deferred.promise;
+            return that.deferred.promise;
         },
 
-        getYears : function() { return this.data.year; },
+        getYears : function() { var that = this; return that.deferred.promise.then(function() { return that.data.year; }); },
 
-		getPeriods : function() { return this.data.period; },
+		getPeriods : function() { var that = this; return that.deferred.promise.then(function() { return that.data.period; }); },
 
-        getTags: function() { return this.data.tag; },
+        getTags: function() { var that = this; return that.deferred.promise.then(function() { return that.data.tag; }); },
 
-        getEntities: function() { return this.data.entities; },
+        getEntities: function() {var that = this; return that.deferred.promise.then(function() { return that.data.entities; }); },
 
-        getSics: function() { return this.data.sics; }
+        getSics: function() {var that = this; return that.deferred.promise.then(function() { return that.data.sics; }); },
+
+        getReportSchema: function() { var that = this; return that.deferred.promise.then(function() { return that.data.reportSchema; }); }
     };
 }])

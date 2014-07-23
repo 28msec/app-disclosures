@@ -891,6 +891,7 @@ angular.module('queries', [])
                  * @param {{string}} fiscalYear - The fiscal year of the fact to retrieve (default: ALL)
                  * @param {{string}} fiscalPeriod - The fiscal period of the fact to retrieve (default: FY)
                  * @param {{string}} aid - The id of the filing
+                 * @param {{string}} map - The concept map that should be used to resolve the concept (default: none)
                  * @param {{string}} onlyNames - Whether only the names of the report elements should be returned. If so, the values don't contain duplicates. (default: false)
                  * @param {{string}} name - The name of the report element to return (e.g. us-gaap:Assets).
                  * @param {{string}} label - A search term to search in the labels of report elements (e.g. stock)
@@ -939,6 +940,10 @@ angular.module('queries', [])
                         queryParameters['aid'] = parameters['aid'];
                     }
 
+                    if (parameters['map'] !== undefined) {
+                        queryParameters['map'] = parameters['map'];
+                    }
+
                     if (parameters['onlyNames'] !== undefined) {
                         queryParameters['onlyNames'] = parameters['onlyNames'];
                     }
@@ -949,6 +954,75 @@ angular.module('queries', [])
 
                     if (parameters['label'] !== undefined) {
                         queryParameters['label'] = parameters['label'];
+                    }
+
+                    if (parameters['token'] !== undefined) {
+                        queryParameters['token'] = parameters['token'];
+                    }
+
+                    if (parameters['_method'] !== undefined) {
+                        queryParameters['_method'] = parameters['_method'];
+                    }
+
+                    if (parameters.$queryParameters) {
+                        Object.keys(parameters.$queryParameters)
+                            .forEach(function(parameterName) {
+                                var parameter = parameters.$queryParameters[parameterName];
+                                queryParameters[parameterName] = parameter;
+                            });
+                    }
+
+                    var url = domain + path;
+                    $http({
+                        timeout: parameters.$timeout,
+                        method: 'POST',
+                        url: url,
+                        params: queryParameters,
+                        data: body,
+                        headers: headers
+                    })
+                        .success(function(data, status, headers, config) {
+                            deferred.resolve(data);
+                            if (parameters.$cache !== undefined) {
+                                parameters.$cache.put(url, data, parameters.$cacheItemOpts ? parameters.$cacheItemOpts : {});
+                            }
+                        })
+                        .error(function(data, status, headers, config) {
+                            deferred.reject({
+                                status: status,
+                                headers: headers,
+                                config: config,
+                                body: data
+                            });
+                        });
+
+                    return deferred.promise;
+                };
+                /**
+                 * Retrieve the report schemas.
+                 * @method
+                 * @name QueriesAPI#listReportSchemas
+                 * @param {{string}} format - The result format
+                 * @param {{string}} name - The name of the report element to return (e.g. us-gaap:Assets).
+                 * @param {{string}} token - The token of the current session (if accessing entities beyond DOW30)
+                 * @param {{}} _method - <p>This API allows its users to retrieve financial information provided to the US Securities and Exchange Commission (SEC) by public companies using the XBRL global standard technical syntax. Submitted XBRL information is read by the system, converted to a format which is optimized for query (as opposed to XBRL which is optimized for information exchange), and stored in a database in that queriable format. Additional metadata is added to the system which is commonly used when querying this financial information. Please note that only financial information provided within SEC forms 10-Q and 10-K is provided via this system.</p> <p>Information can be retrieved about entities, the submissions made by those entities, the components contained within those submissions, the model structure of a component, or the facts reported within a component.  All information is provided in the following formats:  JSON (the default), XML, CSV, and Excel.</p> <p>For more information about using this system, you can download this Excel spreadsheet which contains working examples.  Also, this getting started guide is helpful in understanding the information provided by this system.</p> <p>Please note that information outside of the DOW30 can only be accessed using a valid token that can be retrieved by creating an account on http://www.secxbrl.info and login is done using the Session API.</p> <p>Also note, that the POST method can be simulated by using GET and adding the _method=POST parameter to the HTTP request.</p><p>Please keep in mind that URLs are case sensitive. That is, all parameters need to be provided as shown in the documentation.</p>
+                 *
+                 */
+                this.listReportSchemas = function(parameters) {
+                    var deferred = $q.defer();
+
+                    var path = '/report-schemas.jq';
+
+                    var body;
+                    var queryParameters = {};
+                    var headers = {};
+
+                    if (parameters['format'] !== undefined) {
+                        queryParameters['format'] = parameters['format'];
+                    }
+
+                    if (parameters['name'] !== undefined) {
+                        queryParameters['name'] = parameters['name'];
                     }
 
                     if (parameters['token'] !== undefined) {

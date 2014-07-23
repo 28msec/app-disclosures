@@ -1276,6 +1276,17 @@
                             "paramType": "query"
                         },
                         {
+                            "name": "map",
+                            "description": "The concept map that should be used to resolve the concept (default: none)",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "FundamentalAccountingConcepts",
+                                "null"
+                              ],
+                            "paramType": "query"
+                        },
+                        {
                             "name": "onlyNames",
                             "description": "Whether only the names of the report elements should be returned. If so, the values don't contain duplicates. (default: false)",
                             "required": false,
@@ -1335,6 +1346,76 @@
                             "title": "Retrieve the the names of all report elements of COCA COLA's latest FY filing",
                             "description": "Retrieve a set of names of report elements of COCA COLA's latest FY filing.  Return the result as CSV.",
                             "request": "[API_URL]/_queries/public/api/report-elements.jq?_method=POST&ticker=ko&onlyNames=true&format=csv",
+                            "response": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/report-schemas.jq",
+            "description": "Report Schemas",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Retrieve the report schemas.",
+                    "nickname": "listReportSchemas",
+                    "parameters": [
+                        {
+                            "name": "format",
+                            "description": "The result format",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "json",
+                                "csv",
+                                "xml",
+                                "excel"
+                            ],
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "name",
+                            "description": "The name of the report element to return (e.g. us-gaap:Assets).",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "token",
+                            "description": "The token of the current session (if accessing entities beyond DOW30)",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "_method",
+                            "paramType": "query"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 401,
+                            "message": "Unauthorized: the specified project token is invalid, expired, or has insufficient privileges",
+                            "responseModel": "Error"
+                        },
+                        {
+                            "code": 500,
+                            "message": "An internal error occurred during the processing of the request.",
+                            "responseModel": "Error"
+                        }
+                    ],
+                    "successMessages": [
+                        {
+                            "code": 200,
+                            "message": "Returns all names of the report elements in the selected filings."
+                        }
+                    ],
+                    "examples": [
+                        {
+                            "title": "Retrieve the report schema Fundamental Accounting Concepts",
+                            "description": "Retrieve the report schema Fundamental Accounting Concepts.  Return the result as JSON.",
+                            "request": "[API_URL]/_queries/public/api/report-schemas.jq?_method=POST&name=FundamentalAccountingConcepts",
                             "response": ""
                         }
                     ]
