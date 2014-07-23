@@ -11,9 +11,9 @@
         <input type="text" class="form-control" ng-model="search" placeholder="Search">
     </div>
     <ul class="boxcell scrollable nav nav-stacked nav-xs">
-        <li ng-repeat="c in concepts | filter:search | orderBy:'Label'">
-            <a ui-sref="disclosures.concept({ list: list, concept: c.Name })">
-                <i class="fa fa-chevron-right chevron-right"></i>
+        <li ng-repeat="c in concepts | filter:search | orderBy:'Label'" ng-class="{ disabled: !c.Used }">
+            <a ng-click="checkUsage(c)">
+                <i class="fa fa-chevron-right chevron-right" ng-show="c.Used"></i>
                 {{c.Label}}
             </a>
         </li>
