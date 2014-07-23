@@ -9,8 +9,8 @@ angular.module('main')
         templateUrl: 'disclosures/list/list.html',
         controller: 'DisclosuresListCtrl',
         resolve: {
-            concepts: ['$rootScope', '$stateParams', 'API', function($rootScope, $stateParams, API) {
-                return API.Disclosures.concepts({ list: ($stateParams.list === 'All' ? null : $stateParams.list), token: $rootScope.token });
+            reportSchema: ['$rootScope', '$stateParams', 'API', function($rootScope, $stateParams, API) {
+                return API.getReportSchema();
             }]
         }
     })

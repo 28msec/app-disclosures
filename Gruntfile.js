@@ -153,13 +153,6 @@ module.exports = function (grunt) {
                         className: 'SessionAPI',
                         fileName: 'session.js',
                         angularjs: true
-                    },
-                    {
-                        swagger: 'swagger/disclosures.json',
-                        moduleName: 'disclosures',
-                        className: 'DisclosuresAPI',
-                        fileName: 'disclosures.js',
-                        angularjs: true
                     }
                 ],
                 dest: '<%= config.www %>/modules'

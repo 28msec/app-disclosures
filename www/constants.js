@@ -3,7 +3,7 @@
 
 angular.module("constants", [])
 
-.constant("API_URL", "http://secxbrl-dev.xbrl.io/v1")
+.constant("API_URL", "https://secxbrl-test.beta.28.io/v1")
 
 .constant("DEBUG", true)
 

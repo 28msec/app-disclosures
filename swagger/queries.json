@@ -1351,6 +1351,76 @@
                     ]
                 }
             ]
+        },
+        {
+            "path": "/report-schemas.jq",
+            "description": "Report Schemas",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Retrieve the report schemas.",
+                    "nickname": "listReportSchemas",
+                    "parameters": [
+                        {
+                            "name": "format",
+                            "description": "The result format",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "json",
+                                "csv",
+                                "xml",
+                                "excel"
+                            ],
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "name",
+                            "description": "The name of the report element to return (e.g. us-gaap:Assets).",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "token",
+                            "description": "The token of the current session (if accessing entities beyond DOW30)",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "_method",
+                            "paramType": "query"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 401,
+                            "message": "Unauthorized: the specified project token is invalid, expired, or has insufficient privileges",
+                            "responseModel": "Error"
+                        },
+                        {
+                            "code": 500,
+                            "message": "An internal error occurred during the processing of the request.",
+                            "responseModel": "Error"
+                        }
+                    ],
+                    "successMessages": [
+                        {
+                            "code": 200,
+                            "message": "Returns all names of the report elements in the selected filings."
+                        }
+                    ],
+                    "examples": [
+                        {
+                            "title": "Retrieve the report schema Fundamental Accounting Concepts",
+                            "description": "Retrieve the report schema Fundamental Accounting Concepts.  Return the result as JSON.",
+                            "request": "[API_URL]/_queries/public/api/report-schemas.jq?_method=POST&name=FundamentalAccountingConcepts",
+                            "response": ""
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "models": {
