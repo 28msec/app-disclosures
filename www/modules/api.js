@@ -1,13 +1,14 @@
 'use strict';
 
-angular.module('api', ['queries', 'session'])
-.factory('API', ['$q', '$http', 'QueriesAPI', 'SessionAPI', 'API_URL', 'DEBUG', 'HTML5', function($q, $http, QueriesAPI, SessionAPI, API_URL, DEBUG, HTML5) {
+angular.module('api', ['queries', 'session', 'reports'])
+.factory('API', ['$q', '$http', 'QueriesAPI', 'SessionAPI', 'ReportsAPI', 'API_URL', 'DEBUG', 'HTML5', function($q, $http, QueriesAPI, SessionAPI, ReportsAPI, API_URL, DEBUG, HTML5) {
     return {
         API_URL: API_URL,
         DEBUG: DEBUG,
         HTML5: HTML5,
         Queries: new QueriesAPI(API_URL + '/_queries/public/api'),
         Session: new SessionAPI(API_URL + '/_queries/public'),
+        Reports: new ReportsAPI(API_URL + '/_queries/public/reports'),
         
         data: { },
         deferred: $q.defer(),
@@ -25,8 +26,10 @@ angular.module('api', ['queries', 'session'])
             
             that.Queries.listEntities({})
                 .then(function(data) {
-                    that.Queries.listReportSchemas({ name: 'Disclosures' })
+                    $http.get("/disclosures.json")
+//                    that.Reports.listReports({ _id: "Disclosures" })
                         .then(function(data) {
+                            data = data.data
                             that.data.reportSchema = data;
                             that.deferred.resolve({ initialized: true });
                         },

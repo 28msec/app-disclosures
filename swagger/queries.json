@@ -52,6 +52,13 @@
                             "paramType": "query"
                         },
                         {
+                            "name": "sic",
+                            "description": "The industry group",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
                             "name": "ticker",
                             "description": "A ticker symbols",
                             "required": false,
@@ -511,6 +518,192 @@
                             "description": "The disclosure of the component (e.g. BalanceSheet)",
                             "required": false,
                             "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "label",
+                            "description": "A search term to search in the labels of components (e.g. stock)",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "validate",
+                            "description": "Whether or not to stamp facts for validity (default is false)",
+                            "required": false,
+                            "type": "boolean",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "token",
+                            "description": "The token of the current session (if accessing entities beyond DOW30)",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "_method",
+                            "paramType": "query"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 401,
+                            "message": "Unauthorized: the specified project token is invalid, expired, or has insufficient privileges",
+                            "responseModel": "Error"
+                        },
+                        {
+                            "code": 500,
+                            "message": "An internal error occurred during the processing of the request.",
+                            "responseModel": "Error"
+                        }
+                    ],
+                    "successMessages": [
+                        {
+                            "code": 200,
+                            "message": "Return the fact table for the given component"
+                        }
+                    ],
+                    "examples": [
+                        {
+                            "title": "Fact Table as CSV",
+                            "description": "Retrieve the fact table for a particular component. Return the result as CSV.",
+                            "request": "[API_URL]/_queries/public/api/facttable-for-component.jq?_method=POST&aid=0000021344-14-000008&networkIdentifier=http://www.thecocacolacompany.com/role/ConsolidatedBalanceSheets&format=csv",
+                            "response": ""
+                        },
+                        {
+                            "title": "Fact Table of Coca Cola's Q3/2013 Balance Sheet",
+                            "description": "Retrieve the fact table for the Balance Sheet of Coca Cola filing identified with accession number 0000021344-13-000050. Return the result as XML.",
+                            "request": "[API_URL]/_queries/public/api/facttable-for-component.jq?_method=POST&format=xml&aid=0000021344-13-000050&disclosure=BalanceSheet",
+                            "response": ""
+                        }
+
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/spreadsheet-for-component.jq",
+            "description": "Retrieve a business-friendly Spreadsheet for a Component",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Retrieve the business friendly Spreadsheet for a given component. A component can be selected in three ways. (1) by component id (cid), (2) by accession number and disclosure (aid and disclosure), or (3) by CIK, fiscal year, fiscal period, and disclosure (cik, fiscalYear, fiscalPeriod, and disclosure).",
+                    "nickname": "spreadsheetForComponent",
+                    "parameters": [
+                        {
+                            "name": "format",
+                            "description": "The result format",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "json",
+                                "csv",
+                                "xml",
+                                "excel"
+                            ],
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "cid",
+                            "description": "The id of the component",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "aid",
+                            "description": "The accession number of the filing. This parameter needs to be used together with the disclosure parameter to identify a component.",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "cik",
+                            "description": "The CIK of an entity. This parameter needs to be used together with the fiscalYear, fiscalPeriod, and disclosure parameters to identify a component.",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "ticker",
+                            "description": "The ticker of the entity",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "tag",
+                            "description": "A tag to filter",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "DOW30",
+                                "SP500",
+                                "FORTUNE100",
+                                "PJI",
+                                "ALL"
+                            ],
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "sic",
+                            "description": "The industry group",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "networkIdentifier",
+                            "description": "The network identifier of a particular component",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "fiscalYear",
+                            "description": "The fiscal year of the filing",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "fiscalPeriod",
+                            "description": "The fiscal period of the filing",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "disclosure",
+                            "description": "The disclosure of the component (e.g. BalanceSheet)",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "label",
+                            "description": "A search term to search in the labels of components (e.g. stock)",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "validate",
+                            "description": "Whether or not to stamp facts for validity (default is false)",
+                            "required": false,
+                            "type": "boolean",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "eliminate",
+                            "description": "Wwether to eliminate empty rows/colummns",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "true",
+                                "false"
+                              ],
                             "paramType": "query"
                         },
                         {
@@ -977,7 +1170,7 @@
                     "successMessages": [
                         {
                             "code": 200,
-                            "message": "Return the spreadsheet for the given component"
+                            "message": "Return the spreadsheet for the given report"
                         }
                     ],
                     "examples": [
@@ -1049,6 +1242,13 @@
                             "paramType": "query"
                         },
                         {
+                            "name": "aid",
+                            "description": "The id of the filing",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
                             "name": "fiscalYear",
                             "description": "The fiscal year of the fact to retrieve (default: LATEST)",
                             "required": false,
@@ -1082,15 +1282,8 @@
                             "paramType": "query"
                         },
                         {
-                            "name": "aid",
-                            "description": "The id of the filing",
-                            "required": false,
-                            "type": "string",
-                            "paramType": "query"
-                        },
-                        {
                             "name": "map",
-                            "description": "The concept map that should be used to resolve the concept (default: none)",
+                            "description": "[Deprecated, use report] The concept map that should be used to resolve the concept (default: none)",
                             "required": false,
                             "type": "string",
                             "enum": [
@@ -1101,7 +1294,18 @@
                         },
                         {
                             "name": "rules",
-                            "description": "The rules that should be used to resolve the concept (default: none)",
+                            "description": "[Deprecated, use report] The rules that should be used to resolve the concept (default: none)",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "FundamentalAccountingConcepts",
+                                "null"
+                              ],
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "report",
+                            "description": "The report to use as a context to retrieve the facts. In particular, concept maps and rules found in this report will be used. (default: none)",
                             "required": false,
                             "type": "string",
                             "enum": [
@@ -1276,17 +1480,6 @@
                             "paramType": "query"
                         },
                         {
-                            "name": "map",
-                            "description": "The concept map that should be used to resolve the concept (default: none)",
-                            "required": false,
-                            "type": "string",
-                            "enum": [
-                                "FundamentalAccountingConcepts",
-                                "null"
-                              ],
-                            "paramType": "query"
-                        },
-                        {
                             "name": "onlyNames",
                             "description": "Whether only the names of the report elements should be returned. If so, the values don't contain duplicates. (default: false)",
                             "required": false,
@@ -1302,6 +1495,28 @@
                             "description": "The name of the report element to return (e.g. us-gaap:Assets).",
                             "required": false,
                             "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "map",
+                            "description": "[Deprecated, use report] The concept map that should be used to resolve the concept (default: none)",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "FundamentalAccountingConcepts",
+                                "null"
+                              ],
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "report",
+                            "description": "The report to use as a context to retrieve the report elements. In particular, concept maps found in this report will be used. (default: none)",
+                            "required": false,
+                            "type": "string",
+                            "enum": [
+                                "FundamentalAccountingConcepts",
+                                "null"
+                              ],
                             "paramType": "query"
                         },
                         {
@@ -1346,76 +1561,6 @@
                             "title": "Retrieve the the names of all report elements of COCA COLA's latest FY filing",
                             "description": "Retrieve a set of names of report elements of COCA COLA's latest FY filing.  Return the result as CSV.",
                             "request": "[API_URL]/_queries/public/api/report-elements.jq?_method=POST&ticker=ko&onlyNames=true&format=csv",
-                            "response": ""
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "/report-schemas.jq",
-            "description": "Report Schemas",
-            "operations": [
-                {
-                    "method": "POST",
-                    "summary": "Retrieve the report schemas.",
-                    "nickname": "listReportSchemas",
-                    "parameters": [
-                        {
-                            "name": "format",
-                            "description": "The result format",
-                            "required": false,
-                            "type": "string",
-                            "enum": [
-                                "json",
-                                "csv",
-                                "xml",
-                                "excel"
-                            ],
-                            "paramType": "query"
-                        },
-                        {
-                            "name": "name",
-                            "description": "The name of the report element to return (e.g. us-gaap:Assets).",
-                            "required": false,
-                            "type": "string",
-                            "paramType": "query"
-                        },
-                        {
-                            "name": "token",
-                            "description": "The token of the current session (if accessing entities beyond DOW30)",
-                            "required": false,
-                            "type": "string",
-                            "paramType": "query"
-                        },
-                        {
-                            "name": "_method",
-                            "paramType": "query"
-                        }
-                    ],
-                    "responseMessages": [
-                        {
-                            "code": 401,
-                            "message": "Unauthorized: the specified project token is invalid, expired, or has insufficient privileges",
-                            "responseModel": "Error"
-                        },
-                        {
-                            "code": 500,
-                            "message": "An internal error occurred during the processing of the request.",
-                            "responseModel": "Error"
-                        }
-                    ],
-                    "successMessages": [
-                        {
-                            "code": 200,
-                            "message": "Returns all names of the report elements in the selected filings."
-                        }
-                    ],
-                    "examples": [
-                        {
-                            "title": "Retrieve the report schema Fundamental Accounting Concepts",
-                            "description": "Retrieve the report schema Fundamental Accounting Concepts.  Return the result as JSON.",
-                            "request": "[API_URL]/_queries/public/api/report-schemas.jq?_method=POST&name=FundamentalAccountingConcepts",
                             "response": ""
                         }
                     ]

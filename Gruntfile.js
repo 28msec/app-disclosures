@@ -22,7 +22,7 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        aws: grunt.file.readJSON('grunt-aws.json'),
+        aws: {},
         config: config,
         watch: {
             less: {
@@ -153,6 +153,13 @@ module.exports = function (grunt) {
                         className: 'SessionAPI',
                         fileName: 'session.js',
                         angularjs: true
+                    },
+                    {
+                        swagger: 'swagger/reports.json',
+                        moduleName: 'reports',
+                        className: 'ReportsAPI',
+                        fileName: 'reports.js',
+                        angularjs: true
                     }
                 ],
                 dest: '<%= config.www %>/modules'
@@ -211,7 +218,7 @@ module.exports = function (grunt) {
                 name: 'constants',
                 wrap: '/*jshint quotmark:double */\n"use strict";\n\n<%= __ngModule %>',
                 constants: {
-                    'API_URL': 'https://secxbrl-dev.xbrl.io/v1',
+                    'API_URL': 'https://secxbrl-disclosures2.28.io/v1',
                     'DEBUG': true,
                     'HTML5': true
                 }
@@ -221,7 +228,7 @@ module.exports = function (grunt) {
                 name: 'constants',
                 wrap: '/*jshint quotmark:double */\n"use strict";\n\n<%= __ngModule %>',
                 constants: {
-                    'API_URL': 'https://secxbrl.xbrl.io/v1',
+                    'API_URL': 'https://secxbrl-disclosures2.28.io/v1',
                     'DEBUG': false,
                     'HTML5': true
                 }
@@ -231,7 +238,7 @@ module.exports = function (grunt) {
                 name: 'constants',
                 wrap: '/*jshint quotmark:double */\n"use strict";\n\n<%= __ngModule %>',
                 constants: {
-                    'API_URL': 'https://secxbrl.xbrl.io/v1',
+                    'API_URL': 'https://secxbrl-disclosures2.28.io/v1',
                     'DEBUG': false,
                     'HTML5': false
                 }
@@ -249,7 +256,7 @@ module.exports = function (grunt) {
                 upload: [{
                     src: '<%= config.dist %>/**/*',
                     dest: '',
-                    rel: '<%= config.dist %>/',
+                    rel: '<%= config.dist %>/'
                 }]
             },
             prod: {
@@ -257,7 +264,7 @@ module.exports = function (grunt) {
                 upload: [{
                     src: '<%= config.dist %>/**/*',
                     dest: '',
-                    rel: '<%= config.dist %>/',
+                    rel: '<%= config.dist %>/'
                 }]
             }
         },

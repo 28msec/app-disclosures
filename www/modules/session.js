@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /*global angular:false */
 angular.module('session', [])
     .factory('SessionAPI', ['$q', '$http', '$rootScope',
